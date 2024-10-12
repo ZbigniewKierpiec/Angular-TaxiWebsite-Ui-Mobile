@@ -1,0 +1,256 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+.mainPromise {
+  // width: 100vw;
+  height: 100vh;
+
+  &__promise {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/assets/mercsrodek.png);
+    background-position-x: 40%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+    @include respond(tab-port) {
+      background-attachment: scroll;
+
+    }
+
+    @include respond(phone) {
+      background-attachment: scroll;
+    }
+    &__Txt {
+      padding: 0 10rem;
+      width: 70%;
+      height: 75%;
+      // background-color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      @include respond(tab-port) {
+        padding:0 3rem;
+        width: 95%;
+
+
+      }
+
+      @include respond(phone) {
+        width: 100%;
+      }
+      h2,
+      a {
+        // font-family: "Roboto", sans-serif;
+
+        // color: whitesmoke;
+        text-align: center;
+        line-height: 4rem;
+      }
+      &__h1 {
+        font-size: 4.5rem;
+        color: whitesmoke;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+
+        @include respond(tab-port) {
+          font-size: 3rem;
+           text-wrap:pretty;
+        }
+
+
+      }
+      &__h2 {
+
+        font-size: 2.7rem;
+        color:white;
+        font-style: italic;
+
+        @include respond(tab-port) {
+          font-size: 2.3rem;
+          text-align: justify;
+          text-align: left;
+          font-weight: lighter;
+          text-wrap:balance;
+
+
+        }
+      }
+    }
+  }
+
+  &__a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.7rem;
+    padding: 2rem;
+    position: absolute;
+    text-transform: uppercase;
+    bottom: 6rem;
+    background-color: rgba(0, 0, 0, 0.836);
+    color: white;
+    overflow: hidden;
+    box-shadow: 8px 8px 10px 3px black;
+    font-family: monospace;
+    font-weight: bolder;
+
+  }
+}
+
+.animation span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #0c002b, #efc050);
+  animation: animate1 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animation span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #0c002b, #efc050);
+  animation: animate2 2s linear infinite;
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animation span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #0c002b, #efc050);
+  animation: animate3 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.animation span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #0c002b, #efc050);
+  animation: animate4 2s linear infinite;
+  animation-delay: 2s;
+}
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

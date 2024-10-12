@@ -1,0 +1,304 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px - phones
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px - portrait tablets
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px - landscape tablets
+  }
+
+  @if $breakpoint == tab-port-portrait {
+    @media only screen and (max-width: 56.25em) and (orientation: portrait) {
+      @content;
+    } // Portrait tablets (900px or less, portrait mode)
+  }
+
+  @if $breakpoint == tab-port-landscape {
+    @media only screen and (max-width: 56.25em) and (orientation: landscape) {
+      @content;
+    } // Portrait tablets (900px or less, landscape mode)
+  }
+
+  @if $breakpoint == i-pad {
+    @media only screen and (max-width: 103em) {
+      @content;
+    } // 1648px - larger devices like large tablets and small desktops
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px - large desktop screens
+  }
+
+  @if $breakpoint == ipad-2 {
+    @media only screen and (max-width: 135em) {
+      @content;
+    } // 2160px - very large screens, huge desktops
+  }
+
+  // Additional breakpoint for very small devices like old phones
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 20em) {
+      @content;
+    } // 320px - extremely small screens (older phones)
+  }
+
+  // Additional breakpoint for larger tablet sizes
+  @if $breakpoint == tab-xl {
+    @media only screen and (min-width: 90em) and (max-width: 112.5em) {
+      @content;
+    } // 1440px - large tablets or smaller laptops
+  }
+
+  // Additional breakpoint for larger mobile devices
+  @if $breakpoint == phone-xl {
+    @media only screen and (min-width: 40em) and (max-width: 60.5em) {
+      @content;
+    } // 648px - larger phones or small tablets
+  }
+}
+
+.Cars {
+  width: 95%;
+
+  margin: 0 auto;
+  margin-top: 5rem;
+  // height: auto;
+  overflow: hidden;
+  padding: 0 20rem;
+  // background-color: pink;
+  @include respond(tab-port) {
+    padding: 0 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include respond(phone) {
+    padding: 0 7rem;
+  }
+  &__mercedes {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    @include respond(tab-port) {
+      padding: 0 3rem;
+      width: 100vw !important;
+      height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+  &__imgBox {
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    margin-right: 10rem;
+
+    @include respond(tab-port) {
+      // margin-right: 5rem;
+      height: 30%;
+      margin: 0 auto;
+    }
+
+    &__mercedesIMG {
+      width: 22vw;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include respond(tab-port) {
+        width: 30rem;
+      }
+    }
+  }
+  &__content {
+    @include respond(phone) {
+      width: 100%;
+
+      height: 70rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    &__h2 {
+      display: inline-block;
+      text-decoration-line: underline;
+      font-family: monospace;
+      font-size: 3.5rem;
+      font-weight: bolder;
+      padding: 20px 0;
+
+      @include respond(tab-port) {
+        font-size: 1.5rem;
+      }
+    }
+    &__h4 {
+      padding: 0 20px;
+      font-size: 1.7rem;
+      font-family: "Roboto Slab", serif;
+      word-spacing: 0.4em;
+      line-height: 1.9em;
+
+      @include respond(tab-port) {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  &__vw {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    @include respond(tab-port) {
+      padding: 0 3rem;
+      width: 100vw !important;
+      height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-content: space-evenly;
+    }
+
+    &__content {
+    }
+    &__h2 {
+      display: inline-block;
+      text-decoration-line: underline;
+      font-family: monospace;
+      font-size: 3.5rem;
+      font-weight: bolder;
+      padding: 20px 20px;
+
+      @include respond(tab-port) {
+        font-size: 2.2rem;
+
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &__h4 {
+      padding: 0 20px;
+      font-size: 1.7rem;
+      font-family: "Roboto Slab", serif;
+      word-spacing: 0.4em;
+      line-height: 1.9em;
+    }
+    &__imgBox {
+      display: block;
+      width: 50%;
+      height: 100%;
+      position: relative;
+      margin-left: 10rem;
+      order: -1;
+      &__vwIMG {
+        display: block;
+        width: 24vw;
+        object-fit: contain;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include respond(tab-port) {
+          width: 30rem;
+        }
+      }
+    }
+  }
+
+  &__vito {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    @include respond(tab-port) {
+      padding: 0 3rem;
+      width: 100vw !important;
+      height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      align-content: space-evenly;
+    }
+
+    &__imgBox {
+      display: block;
+      width: 50%;
+      height: 100%;
+      position: relative;
+      margin-right: 10rem;
+
+      @include respond(tab-port) {
+        width: 100%;
+
+        margin-right: 0 !important;
+      }
+      &__vitoIMG {
+        display: block;
+        width: 30vw;
+        object-fit: cover;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include respond(tab-port) {
+          width: 30rem;
+        }
+      }
+    }
+    &__content {
+      &__h2 {
+        display: inline-block;
+        text-decoration-line: underline;
+        font-family: monospace;
+        font-size: 3.5rem;
+        font-weight: bolder;
+        padding: 20px 20px;
+
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+        }
+      }
+      &__h4 {
+        padding: 0 20px;
+        font-size: 1.7rem;
+        font-family: "Roboto Slab", serif;
+        word-spacing: 0.4em;
+        line-height: 1.9em;
+      }
+    }
+  }
+}
+
+.line {
+  height: 1px;
+  border: 0;
+
+  box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -webkit-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+  -moz-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+}
