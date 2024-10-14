@@ -85,9 +85,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   margin: 0 auto;
-
-  justify-content: center;
+  justify-items: center;
   align-items: center;
+
+
   @include respond(tab-port) {
     width: 85%;
     margin-top: 10rem;
