@@ -37,13 +37,16 @@ export class HeaderComponent {
   @ViewChild('segmentedControl', { static: true })
   segmentedControl?: ElementRef; // Query for the slide element
   markerWidth: number = 0;
-
+  isFixed = false;
+  navbarOffsetTop: number;
   isActive: boolean = false;
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private sticky: StickyService
-  ) {}
+  ) {
+    this.navbarOffsetTop = this.getNavbarOffsetTop();
+  }
 
   selectLi(index: number): void {
     // Ensure the list items are available
@@ -92,9 +95,16 @@ export class HeaderComponent {
 
 
 
+  getNavbarOffsetTop(): number {
+    const navbar = document.getElementById('navbar');
+    return navbar ? navbar.offsetTop : 0;
+}
 
 
-
+@HostListener('window:scroll', [])
+onWindowScroll() {
+    this.isFixed = window.pageYOffset > this.navbarOffsetTop;
+}
 
 
 }

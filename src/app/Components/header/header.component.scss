@@ -167,8 +167,9 @@
   }
 }
 .nav {
+
   width: 100vw;
-  position: relative;
+  // position: relative;
   padding: 3rem 7rem;
   background-color: black;
 
@@ -176,8 +177,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 99999999999999999999999 !important;
-
+  z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+}
   @include respond(tab-port) {
     // background-color: pink !important;
     // height: 30rem;
@@ -323,7 +329,7 @@
 }
 
 .mobile {
-  position: relative;
+  position:relative;
   width: 100vw;
 
   height:0;
