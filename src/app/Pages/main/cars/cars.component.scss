@@ -78,6 +78,7 @@ img {
   --mobile-h1: 2.2rem;
   --desktop-h2: 2.5rem;
   --mobile-h2: 2.1rem;
+  --font-weight-h2: 600;
   width: 100%;
   // min-height: 50vh;
 
@@ -160,7 +161,7 @@ img {
           padding: 0 20px;
           font-size: 1.9rem;
           font-size: var(--mobile-h2);
-          font-weight: 500;
+          font-weight: var(--font-weight-h2);
           font-family: "Roboto Slab", serif;
           word-spacing: 0.25rem;
           line-height: 1.9em;
@@ -233,7 +234,7 @@ img {
           word-spacing: 0.25rem;
           line-height: 1.9em;
           text-wrap: pretty;
-          font-weight: 500;
+          font-weight: var(--font-weight-h2);
         }
       }
     }
@@ -301,7 +302,7 @@ img {
           font-size: var(--mobile-h2);
           font-family: "Roboto Slab", serif;
           word-spacing: 0.25rem;
-          font-weight: 500;
+          font-weight: var(--font-weight-h2);
           line-height: 1.9em;
           text-wrap: pretty;
         }
