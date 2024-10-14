@@ -14,7 +14,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StickyService } from '../../Services/sticky.service';
 import { NgClass, NgStyle } from '@angular/common';
 import { HamburgerComponent } from '../hamburger/hamburger.component';
-import { FormsModule, NgModel } from '@angular/forms'; // <-- Import FormsModule
+import { FormsModule, NgModel } from '@angular/forms';
+import { HeaderMobileContactComponent } from "./header-mobile-contact/header-mobile-contact.component"; // <-- Import FormsModule
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -25,7 +26,8 @@ import { FormsModule, NgModel } from '@angular/forms'; // <-- Import FormsModule
     NgStyle,
     HamburgerComponent,
     FormsModule,
-  ],
+    HeaderMobileContactComponent
+],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   encapsulation: ViewEncapsulation.None,

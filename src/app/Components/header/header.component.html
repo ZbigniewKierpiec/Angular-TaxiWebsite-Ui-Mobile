@@ -1,113 +1,123 @@
+<header class="header">
+  <div class="header__flag header__flag--left">
+    <img
+      src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
+      alt="Roundel of Poland (1921–1993) on the left"
+    />
+  </div>
 
-  <header class="header">
-    <div class="header__flag header__flag--left">
-      <img
-        src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
-        alt="Roundel of Poland (1921–1993) on the left"
-      />
-    </div>
-
-    <div class="header__contact">
-      <div class="header__contact__phone">
-        <a class="mainHeader__contact__a" href="tel:07960186334">
-          <p>
-            <span>
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              07960186334
-            </span>
-          </p>
-        </a>
-      </div>
-
-      <div class="header__contact__email">
-        <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
-          <p>
-            <span>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              bookingtaxi.online
-            </span>
-          </p>
-        </a>
-      </div>
+  <div class="header__contact">
+    <div class="header__contact__phone">
+      <a class="mainHeader__contact__a" href="tel:07960186334">
+        <p>
+          <span>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            07960186334
+          </span>
+        </p>
+      </a>
     </div>
 
-    <div class="header__social">
-      <ul class="mainHeader__social__list">
-        <li class="soc zorro mainHeader__social__list__items">
-          <i class="fab fa-facebook-f zorro"></i>
-        </li>
-        <li class="soc mainHeader__social__list__items">
-          <i class="fab fa-linkedin-in"></i>
-        </li>
-        <li class="soc mainHeader__social__list__items">
-          <i class="fab fa-twitter"></i>
-        </li>
-      </ul>
+    <div class="header__contact__email">
+      <a class="mainHeader__mail__a" href="mailto:zbigniewkierpiec@gmail.com">
+        <p>
+          <span>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            bookingtaxi.online
+          </span>
+        </p>
+      </a>
     </div>
-    <div class="header__flag header__flag--right">
-      <img
-        src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
-        alt="Roundel of Poland (1921–1993) on the right"
-      />
-    </div>
-  </header>
-  <nav #navBar   [ngClass]="{'fixed': isFixed}"         class="nav">
-    <div class="nav__logo">
-      <img
-        src="/assets/Precious Stones eBay Logo.png"
-        alt="Bracknell Executive Travel Logo"
-      />
-      <span>bracknell executive travel</span>
-    </div>
-    <div class="nav__menu">
-      <ul class="nav__menu__list">
-        <li #listItem (click)="selectLi(0)" class="nav__menu__list__item">
-          <a [routerLink]="['/bracknellTaxis/home']">home</a>
-        </li>
-        <li #listItem (click)="selectLi(1)" class="nav__menu__list__item">
-          <a [routerLink]="['/bracknellTaxis/airportTransfer']"
-            >airport transfer</a
-          >
-        </li>
-        <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
-          <a>testimonials</a>
-        </li>
-        <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
-          <a>book a taxi</a>
-        </li>
-        <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
-          <a>contact</a>
-        </li>
-        <div
-          [ngStyle]="{ 'width.px': markerWidth }"
-          #segmentedControl
-          #marker
-          class="slide"
-        ></div>
-      </ul>
-    </div>
-    <div class="nav__badge">
-      <span>24</span>
-      <img src="/assets/mercedes.png" alt="Mercedes Logo" />
-      <span>7</span>
-    </div>
-    <div class="nav__hamburger">
-      <app-hamburger (menuToggled)="onMenuToggle()"      ></app-hamburger>
+  </div>
 
-    </div>
-  </nav>
-  <section                  [classList]="isActive ?'active mobile      ':'mobile'"       class="mobile">
-    <ul class="mobile__list">
-      <li [routerLinkActive]="'active'" class="active">
+  <div class="header__social">
+    <ul class="mainHeader__social__list">
+      <li class="soc zorro mainHeader__social__list__items">
+        <i class="fab fa-facebook-f zorro"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-linkedin-in"></i>
+      </li>
+      <li class="soc mainHeader__social__list__items">
+        <i class="fab fa-twitter"></i>
+      </li>
+    </ul>
+  </div>
+  <div class="header__flag header__flag--right">
+    <img
+      src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
+      alt="Roundel of Poland (1921–1993) on the right"
+    />
+  </div>
+</header>
+<nav #navBar [ngClass]="{ fixed: isFixed }" class="nav">
+  <div class="nav__logo">
+    <img
+      src="/assets/Precious Stones eBay Logo.png"
+      alt="Bracknell Executive Travel Logo"
+    />
+    <span>bracknell executive travel</span>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__menu__list">
+      <li #listItem (click)="selectLi(0)" class="nav__menu__list__item">
         <a [routerLink]="['/bracknellTaxis/home']">home</a>
       </li>
-      <li [routerLinkActive]="'active'">
-        <a [routerLink]="['/bracknellTaxis/airportTransfer']">airport transfer</a>
+      <li #listItem (click)="selectLi(1)" class="nav__menu__list__item">
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']"
+          >airport transfer</a
+        >
       </li>
-      <li><a>testimonials</a></li>
-      <li><a>book a taxi</a></li>
-      <li><a>contact</a></li>
+      <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
+        <a>testimonials</a>
+      </li>
+      <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
+        <a>book a taxi</a>
+      </li>
+      <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
+        <a>contact</a>
+      </li>
+      <div
+        [ngStyle]="{ 'width.px': markerWidth }"
+        #segmentedControl
+        #marker
+        class="slide"
+      ></div>
     </ul>
+  </div>
+  <div class="nav__badge">
+    <span>24</span>
+    <img src="/assets/mercedes.png" alt="Mercedes Logo" />
+    <span>7</span>
+  </div>
+<div class="header-contact-mobile">
+  <app-header-mobile-contact></app-header-mobile-contact>
+</div>
+
+
+
+
+  <div class="nav__hamburger">
+    <app-hamburger (menuToggled)="onMenuToggle()"></app-hamburger>
+  </div>
+
+  <section
+  [classList]="isActive ? 'active mobile      ' : 'mobile'"
+  class="mobile"
+  >
+  <ul class="mobile__list">
+    <li [routerLinkActive]="'active'" class="active">
+      <a [routerLink]="['/bracknellTaxis/home']">home</a>
+    </li>
+    <li [routerLinkActive]="'active'">
+      <a [routerLink]="['/bracknellTaxis/airportTransfer']">airport transfer</a>
+    </li>
+    <li><a>testimonials</a></li>
+    <li><a>book a taxi</a></li>
+    <li><a>contact</a></li>
+  </ul>
   </section>
 
+
+</nav>
 
