@@ -68,227 +68,232 @@
     } // 648px - larger phones or small tablets
   }
 }
+// @include respond(tab-port) {
+img {
+  width: 2rem;
+}
 
-.Cars {
-  width: 95%;
+.cars {
+  width: 100%;
+  // min-height: 50vh;
 
-  margin: 0 auto;
-  margin-top: 5rem;
-  // height: auto;
-  overflow: hidden;
-  padding: 0 20rem;
-  // background-color: pink;
-  @include respond(tab-port) {
-    padding: 0 7rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
 
-  @include respond(phone) {
-    padding: 0 7rem;
-  }
+  background-image: linear-gradient(
+    to right top,
+    #cad283,
+    #cad282,
+    #c9d281,
+    #c9d180,
+    #c9d17f,
+    #c9d282,
+    #c9d285,
+    #c9d388,
+    #c9d590,
+    #cad698,
+    #cbd89f,
+    #ccd9a7
+  );
+
   &__mercedes {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    padding: 4rem 3rem;
     @include respond(tab-port) {
-      padding: 0 3rem;
-      width: 100vw !important;
-      height: 80vh;
-      display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
     }
-  }
-  &__imgBox {
-    width: 50%;
-    height: 100%;
-    position: relative;
-
-    margin-right: 10rem;
-
-    @include respond(tab-port) {
-      // margin-right: 5rem;
-      height: 30%;
-      margin: 0 auto;
-    }
-
-    &__mercedesIMG {
-      width: 22vw;
-      object-fit: cover;
-      display: block;
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      @include respond(tab-port) {
-        width: 30rem;
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
       }
     }
-  }
-  &__content {
-    @include respond(phone) {
-      width: 100%;
-
-      height: 70rem;
+    &__text {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: space-evenly;
-    }
-    &__h2 {
-      display: inline-block;
-      text-decoration-line: underline;
-      font-family: monospace;
-      font-size: 3.5rem;
-      font-weight: bolder;
-      padding: 20px 0;
-
       @include respond(tab-port) {
-        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3rem;
       }
-    }
-    &__h4 {
-      padding: 0 20px;
-      font-size: 1.7rem;
-      font-family: "Roboto Slab", serif;
-      word-spacing: 0.4em;
-      line-height: 1.9em;
 
-      @include respond(tab-port) {
-        font-size: 1.4rem;
-      }
-    }
-  }
-  &__vw {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-
-    @include respond(tab-port) {
-      padding: 0 3rem;
-      width: 100vw !important;
-      height: 80vh;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      align-content: space-evenly;
-    }
-
-    &__content {
-    }
-    &__h2 {
-      display: inline-block;
-      text-decoration-line: underline;
-      font-family: monospace;
-      font-size: 3.5rem;
-      font-weight: bolder;
-      padding: 20px 20px;
-
-      @include respond(tab-port) {
-        font-size: 2.2rem;
-
-        display: block;
-        text-align: center;
-      }
-    }
-
-    &__h4 {
-      padding: 0 20px;
-      font-size: 1.7rem;
-      font-family: "Roboto Slab", serif;
-      word-spacing: 0.4em;
-      line-height: 1.9em;
-    }
-    &__imgBox {
-      display: block;
-      width: 50%;
-      height: 100%;
-      position: relative;
-      margin-left: 10rem;
-      order: -1;
-      &__vwIMG {
-        display: block;
-        width: 24vw;
-        object-fit: contain;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include respond(tab-port) {
-          width: 30rem;
-        }
-      }
-    }
-  }
-
-  &__vito {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-
-    @include respond(tab-port) {
-      padding: 0 3rem;
-      width: 100vw !important;
-      height: 90vh;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      align-content: space-evenly;
-    }
-
-    &__imgBox {
-      display: block;
-      width: 50%;
-      height: 100%;
-      position: relative;
-      margin-right: 10rem;
-
-      @include respond(tab-port) {
-        width: 100%;
-
-        margin-right: 0 !important;
-      }
-      &__vitoIMG {
-        display: block;
-        width: 30vw;
-        object-fit: cover;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include respond(tab-port) {
-          width: 30rem;
-        }
-      }
-    }
-    &__content {
-      &__h2 {
-        display: inline-block;
-        text-decoration-line: underline;
-        font-family: monospace;
-        font-size: 3.5rem;
-        font-weight: bolder;
-        padding: 20px 20px;
-
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-family: "Roboto Slab", serif;
         @include respond(tab-port) {
           font-size: 2.2rem;
 
           display: block;
           text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
         }
       }
-      &__h4 {
-        padding: 0 20px;
-        font-size: 1.7rem;
+      h2 {
+        font-size: 2.5rem;
         font-family: "Roboto Slab", serif;
-        word-spacing: 0.4em;
-        line-height: 1.9em;
+        line-height: 3.9rem;
+
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
+      }
+    }
+  }
+  &__hyundai {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
+    }
+
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      order: 2;
+      @include respond(tab-port) {
+        order: 1;
+      }
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
+      }
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3rem;
+      order: 1;
+      h1 {
+        font-size: 3rem;
+        font-family: "Roboto Slab", serif;
+        display: block;
+        text-align: center;
+        margin-bottom: 2rem;
+        text-wrap: pretty;
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
+        }
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-family: "Roboto Slab", serif;
+        line-height: 3.9rem;
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
+      }
+    }
+  }
+  &__vito {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4rem 3rem;
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 30rem 1fr;
+      padding: 1rem 1rem;
+    }
+
+    &__photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: block;
+        object-fit: cover;
+        width: 50%;
+        @include respond(tab-port) {
+          width: 60%;
+        }
+      }
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3rem;
+      @include respond(tab-port) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-family: "Roboto Slab", serif;
+        @include respond(tab-port) {
+          font-size: 2.2rem;
+
+          display: block;
+          text-align: center;
+          margin-bottom: 3rem;
+          text-wrap: pretty;
+        }
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-family: "Roboto Slab", serif;
+        line-height: 3.9rem;
+
+        @include respond(tab-port) {
+          padding: 0 20px;
+          font-size: 1.9rem;
+          font-family: "Roboto Slab", serif;
+          word-spacing: 0.25rem;
+          line-height: 1.9em;
+          text-wrap: pretty;
+        }
       }
     }
   }
@@ -301,4 +306,8 @@
   box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
   -webkit-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
   -moz-box-shadow: 0px -4px 201px 200px rgba(0, 172, 250, 0.7);
+
+  @include respond(tab-port) {
+    display: none;
+  }
 }

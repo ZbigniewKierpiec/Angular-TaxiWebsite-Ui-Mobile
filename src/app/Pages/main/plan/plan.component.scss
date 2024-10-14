@@ -69,8 +69,6 @@
   }
 }
 
-
-
 .space {
   width: 100%;
 
@@ -88,10 +86,20 @@
   grid-template-rows: 1fr 1fr;
   margin: 0 auto;
   @include respond(tab-port) {
+    width: 85%;
     margin-top: 10rem;
     grid-template-columns: 1fr;
-    height:auto;
+    height: auto;
+
+    margin-bottom: 2rem;
   }
+  article {
+    @include respond(tab-port) {
+      height: auto;
+      margin-bottom: 3rem;
+    }
+  }
+
   &__airport {
     width: 90%;
     height: 50%;
@@ -100,10 +108,16 @@
     justify-content: center;
 
     text-align: left;
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 
   &__fas {
     margin-right: 20px;
+    @include respond(tab-port) {
+      margin-right: 5rem;
+    }
   }
   &__i {
     font-size: 5rem;
@@ -113,12 +127,19 @@
     font-size: 3rem;
     font-family: monospace;
     margin-bottom: 10px;
+    @include respond(tab-port) {
+      text-wrap: pretty;
+    }
   }
 
   &__p {
     font-family: "Roboto", sans-serif;
     font-size: 1.9rem;
     line-height: 1.5em;
+
+    @include respond(tab-port) {
+      text-wrap: balance;
+    }
   }
 }
 .space2 {
