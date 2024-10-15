@@ -111,6 +111,7 @@
     background-color: rgb(234, 225, 225);
   }
   p {
+    text-wrap: pretty;
     font-size: 1.7rem;
   }
   i {
@@ -139,7 +140,7 @@
   }
   p {
     font-size: 1.7rem;
-    text-wrap: balance;
+    text-wrap: pretty;
     @include respond(tab-port) {
       margin-top: 1rem;
     }

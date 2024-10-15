@@ -113,6 +113,7 @@
     background-color: rgb(234, 225, 225);
   }
   p {
+    text-wrap: pretty;
     font-size: 1.7rem;
   }
   i {
@@ -135,7 +136,7 @@
   padding: 0 2rem;
   cursor: pointer;
   p {
-    text-wrap: balance;
+   text-wrap: pretty;
     font-size: 1.7rem;
   }
 }
