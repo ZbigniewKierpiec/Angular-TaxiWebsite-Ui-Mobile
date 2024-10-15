@@ -1,0 +1,65 @@
+.accordion {
+  width: 50%; /* Set your desired width */
+  width: 100%;
+  background-color: #f1f1f1;
+
+  border-radius: 1.3rem;
+  padding: 1rem 3rem;
+}
+
+// .body {
+//   width: 95%;
+//   height: 90%;
+// }
+
+.accordion-section {
+  width: 100%;
+  position: relative;
+  background-color: #f1f1f1;
+
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 77777777777777777999999999999999999999999999999999999999999999999 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+
+  height: 10rem;
+  padding: 0 2rem;
+  &.active {
+    background-color: rgb(234, 225, 225);
+  }
+  &:hover {
+    background-color: rgb(234, 225, 225);
+  }
+  p {
+    font-size: 1.7rem;
+  }
+  i {
+    color: rgb(106, 101, 101);
+    transition: all 0.3s linear;
+    font-size: 1.7rem;
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.accordion-content {
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bolder;
+  padding: 0 2rem;
+  cursor: pointer;
+  p {
+    font-size: 1.7rem;
+  }
+}
+.custom-class {
+  border-top: 1px solid rgba(0, 0, 0, 0.323);
+}

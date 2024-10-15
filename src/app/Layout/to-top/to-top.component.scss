@@ -16,6 +16,7 @@
   pointer-events: none;
   transform: translateY(5rem);
   transition: all 0.3s linear;
+  z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
   /* Active state for the button */
   &.active {
     visibility: visible;

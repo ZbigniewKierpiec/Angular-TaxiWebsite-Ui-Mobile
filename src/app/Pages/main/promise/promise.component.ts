@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import AOS from 'aos'; // Import AOS
+import AOS from 'aos';
+import { AnimatedBorderBtnComponent } from "../../../Components/Buttons/animated-border-btn/animated-border-btn.component"; // Import AOS
 @Component({
   selector: 'app-promise',
   standalone: true,
-  imports: [],
+  imports: [AnimatedBorderBtnComponent],
   templateUrl: './promise.component.html',
   styleUrl: './promise.component.scss'
 })
