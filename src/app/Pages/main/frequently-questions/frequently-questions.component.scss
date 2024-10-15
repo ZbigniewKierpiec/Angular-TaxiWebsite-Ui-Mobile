@@ -82,6 +82,9 @@
   grid-gap: 4rem;
   @include respond(tab-port) {
     padding: 3rem 2rem;
+    height:max-content;
+
+
   }
   &__h1 {
     text-align: center;
@@ -108,7 +111,7 @@
     grid-gap: 3rem;
 
     @include respond(tab-port) {
-
+      height: fit-content;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
@@ -118,7 +121,7 @@
       height: 100%;
       @include respond(tab-port) {
         width: 100%;
-        height:max-content;
+        height:fit-content;
       }
     }
   }
