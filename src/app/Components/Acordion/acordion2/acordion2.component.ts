@@ -58,7 +58,7 @@ export class Acordion2Component {
     {
       id: 3,
       title: 'How do I find my driver at the airport?',
-      content: 'After you arrive, please check the airport’s designated pickup area for taxis. Your driver will typically be waiting with a sign displaying your name.  If you have trouble locating them, please call our dispatch center for assistance.',
+      content: 'After you arrive, please check the airport’s designated pickup area for taxis. Your driver will typically be waiting with a sign displaying your name. We always monitor flights to ensure timely pickups. If you have trouble locating them, please call our dispatch center for assistance.',
 
       expanded: false,
     },
