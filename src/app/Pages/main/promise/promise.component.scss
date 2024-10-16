@@ -199,6 +199,7 @@
   @include respond(tab-port) {
     background-image: none;
 
+     min-height: 100vh;
     // background: linear-gradient(30deg, #fff, rgb(244, 133, 68));
     // background: linear-gradient(30deg, #fff, #f0d641);
     // animation: animate 100s linear infinite;
@@ -236,9 +237,16 @@
     padding: 0 7rem;
     border-radius: 1rem;
     @include respond(tab-port) {
-
       width: 80%;
+      height: 80%;
       padding: 0;
+
+      flex-wrap: nowrap;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+
 
       background-color: transparent;
     }
@@ -281,7 +289,7 @@
         text-wrap: balance;
         line-height: 1.8;
         font-size: 2.4rem;
-
+        font-weight: 500;
         font-family: "Roboto", sans-serif;
       }
 

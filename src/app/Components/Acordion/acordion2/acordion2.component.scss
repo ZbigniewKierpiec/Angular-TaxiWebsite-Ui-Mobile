@@ -73,7 +73,7 @@
   width: 50%; /* Set your desired width */
   width: 100%;
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   border-radius: 1.3rem;
   padding: 1rem 3rem;
 }
@@ -87,7 +87,7 @@
   width: 100%;
   position: relative;
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   font-size: 2rem;
   cursor: pointer;
   z-index: 12 !important;
@@ -126,7 +126,7 @@
 
 .accordion-content {
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,6 +144,7 @@
     text-wrap: pretty;
     @include respond(tab-port) {
       margin-top: 1rem;
+      margin-bottom: 1.9rem;
     }
   }
 }

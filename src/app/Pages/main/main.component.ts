@@ -10,11 +10,12 @@ import { FrequentlyQuestionsComponent } from "./frequently-questions/frequently-
 import { TextBannerComponent } from "../airport-transfer-component/text-banner/text-banner.component";
 import { DividersComponent } from "../../Components/dividers/dividers.component";
 import { DividerDownComponent } from "../../Components/dividers/divider-down/divider-down.component";
+import { BookNowMobileComponent } from "../../Layout/book-now-mobile/book-now-mobile.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [SlideshowComponent, PromiseComponent, CarsComponent, CarsTestComponent, PlanComponent, TimerComponent, SocialComponent, FrequentlyQuestionsComponent, TextBannerComponent, DividersComponent, DividerDownComponent],
+  imports: [SlideshowComponent, PromiseComponent, CarsComponent, CarsTestComponent, PlanComponent, TimerComponent, SocialComponent, FrequentlyQuestionsComponent, TextBannerComponent, DividersComponent, DividerDownComponent, BookNowMobileComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

@@ -80,10 +80,15 @@
   color: white;
   &__tittle {
     margin-bottom: 3rem;
+    @include respond(tab-port) {
+
+    }
     h1 {
       font-size: 7rem;
       text-align: center;
-      font-size: clamp(1.7rem, 2vw + 1rem, 2rem);
+      font-size: clamp(2.7rem, 2vw + 1rem, 2rem);
+      text-wrap: pretty;
+      letter-spacing: .2rem;
     }
   }
   &__us {
@@ -96,6 +101,11 @@
     @include respond(tab-port) {
       flex-direction: column;
       line-height: 1.6;
+    }
+    &__h2{
+      @include respond(tab-port) {
+        display: none;
+      }
     }
     h2 {
       align-self: flex-start;

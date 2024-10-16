@@ -3,7 +3,7 @@
   position: fixed;
   bottom: 0;
   right: 25px;
-  bottom: 20px;
+  bottom: 10px;
   width: 10rem;
   height: 10rem;
   background-color: var(--back-to-top-background);
@@ -14,13 +14,13 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(5rem);
-  transition: all 0.3s linear;
+  transform: translateY(-2rem);
+  transition: all 0.4s linear;
   z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
   /* Active state for the button */
   &.active {
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(-15rem);
     opacity: 1;
     pointer-events: all;
   }
