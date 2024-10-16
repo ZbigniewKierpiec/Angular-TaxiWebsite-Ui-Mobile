@@ -7,11 +7,14 @@ import { PlanComponent } from "./plan/plan.component";
 import { TimerComponent } from "./timer/timer.component";
 import { SocialComponent } from "../../Layout/social/social.component";
 import { FrequentlyQuestionsComponent } from "./frequently-questions/frequently-questions.component";
+import { TextBannerComponent } from "../airport-transfer-component/text-banner/text-banner.component";
+import { DividersComponent } from "../../Components/dividers/dividers.component";
+import { DividerDownComponent } from "../../Components/dividers/divider-down/divider-down.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [SlideshowComponent, PromiseComponent, CarsComponent, CarsTestComponent, PlanComponent, TimerComponent, SocialComponent, FrequentlyQuestionsComponent],
+  imports: [SlideshowComponent, PromiseComponent, CarsComponent, CarsTestComponent, PlanComponent, TimerComponent, SocialComponent, FrequentlyQuestionsComponent, TextBannerComponent, DividersComponent, DividerDownComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

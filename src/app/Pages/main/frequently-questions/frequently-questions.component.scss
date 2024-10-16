@@ -70,26 +70,29 @@
 }
 
 .questions {
+  position: relative;
   height: 70vh;
   // height: 80vh;
   height: fit-content;
-  background-image: linear-gradient(to top, #faf4f4, #f8ebeb, #f5e2e2, #f3dada, #f0d1d1);
+  // background-image: linear-gradient(to top, #faf4f4, #f8ebeb, #f5e2e2, #f3dada, #f0d1d1);
   padding: 3rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   grid-gap: 4rem;
+  z-index: 3;
   @include respond(tab-port) {
     padding: 3rem 2rem;
     height:max-content;
-
+    background-color:#8EB98F !important;
 
   }
   &__h1 {
     text-align: center;
     font-size: 5rem;
     text-wrap: pretty;
+    z-index: 444444444444 !important;
     @include respond(tab-port) {
       font-size: 4rem;
 

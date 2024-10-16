@@ -347,7 +347,7 @@
   @include respond(tab-port) {
     position: absolute;
     left: 0;
-    bottom: -30rem;
+    bottom:-30rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -410,8 +410,9 @@
     }
   }
 }
-.header-contact-mobile {
+.header-contact-mobile{
   display: none;
   @include respond(tab-port) {
+    display: block;
   }
 }

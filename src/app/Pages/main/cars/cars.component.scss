@@ -86,21 +86,22 @@ img {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
 
-  background-image: linear-gradient(
-    to right top,
-    #cad283,
-    #cad282,
-    #c9d281,
-    #c9d180,
-    #c9d17f,
-    #c9d282,
-    #c9d285,
-    #c9d388,
-    #c9d590,
-    #cad698,
-    #cbd89f,
-    #ccd9a7
-  );
+  // background-image: linear-gradient(
+  //   to right top,
+  //   #cad283,
+  //   #cad282,
+  //   #c9d281,
+  //   #c9d180,
+  //   #c9d17f,
+  //   #c9d282,
+  //   #c9d285,
+  //   #c9d388,
+  //   #c9d590,
+  //   #cad698,
+  //   #cbd89f,
+  //   #ccd9a7
+  // );
+background-color:#8EB98F;
 
   &__mercedes {
     display: grid;

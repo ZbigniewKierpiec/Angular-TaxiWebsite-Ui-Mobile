@@ -199,30 +199,30 @@
   @include respond(tab-port) {
     background-image: none;
 
-    background: linear-gradient(30deg, #fff, rgb(244, 133, 68));
-    background: linear-gradient(30deg, #fff, #f0d641);
-    animation: animate 100s linear infinite;
+    // background: linear-gradient(30deg, #fff, rgb(244, 133, 68));
+    // background: linear-gradient(30deg, #fff, #f0d641);
+    // animation: animate 100s linear infinite;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-top: 100vh solid transparent;
-      border-left: 100vh solid #f6f162;
-      border-left: 100vh solid #006400;
-      opacity: 0.1;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      border-top: 100vh solid transparent;
-      border-right: 100vh solid #f6f162;
-      border-right: 100vh solid #006400;
-      opacity: 0.1;
-    }
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   border-top: 100vh solid transparent;
+    //   border-left: 100vh solid #f6f162;
+    //   border-left: 100vh solid #006400;
+    //   opacity: 0.1;
+    // }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   bottom: 0;
+    //   right: 0;
+    //   border-top: 100vh solid transparent;
+    //   border-right: 100vh solid #f6f162;
+    //   border-right: 100vh solid #006400;
+    //   opacity: 0.1;
+    // }
   }
 
   &__text {
@@ -237,8 +237,9 @@
     border-radius: 1rem;
     @include respond(tab-port) {
 
-      width: 90%;
+      width: 80%;
       padding: 0;
+
       background-color: transparent;
     }
 
@@ -278,6 +279,10 @@
       @include respond(tab-port) {
         color: black;
         text-wrap: balance;
+        line-height: 1.8;
+        font-size: 2.4rem;
+
+        font-family: "Roboto", sans-serif;
       }
 
 
@@ -299,7 +304,7 @@
       font-weight: bolder;
 
       @include respond(tab-port) {
-   
+
         display: inline-block;
         font-size: 1.7rem;
         padding: 2.5rem 1.4rem;

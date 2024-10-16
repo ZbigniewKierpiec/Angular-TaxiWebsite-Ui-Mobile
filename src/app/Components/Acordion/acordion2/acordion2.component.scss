@@ -73,7 +73,7 @@
   width: 50%; /* Set your desired width */
   width: 100%;
   background-color: #f1f1f1;
-
+  background-color:#8EB98F !important;
   border-radius: 1.3rem;
   padding: 1rem 3rem;
 }
@@ -87,10 +87,10 @@
   width: 100%;
   position: relative;
   background-color: #f1f1f1;
-
+  background-color:#8EB98F !important;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 77777777777777777999999999999999999999999999999999999999999999999 !important;
+  z-index: 12 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,6 +126,7 @@
 
 .accordion-content {
   background-color: #f1f1f1;
+  background-color:#8EB98F !important;
   display: flex;
   justify-content: center;
   align-items: center;
