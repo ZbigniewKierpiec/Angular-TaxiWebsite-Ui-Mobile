@@ -43,6 +43,7 @@
       </li>
     </ul>
   </div>
+
   <div class="header__flag header__flag--right">
     <img
       src="assets/220px-Roundel_of_Poland_(1921–1993).svg.png"
@@ -90,34 +91,68 @@
     <img src="/assets/mercedes.png" alt="Mercedes Logo" />
     <span>7</span>
   </div>
-<div class="header-contact-mobile">
-  <app-header-mobile-contact></app-header-mobile-contact>
-</div>
 
 
+  <div class="nav__board">
+    <div
+      (click)="onCountrySelection()"
+      class="nav__board__country-selection"
+    >
+      <div class="nav__board__country-selection__flag">
+        <img class="rounded-circle" src="{{ languages }}" alt="" />
+      </div>
+    </div>
 
+
+  </div>
+
+  <div   [class.active]="isActiveList"       class="nav__lang-menu">
+    <ul
+   
+    class="header-country-list"
+  >
+    <ng-container *ngFor="let item of country">
+      <li
+        class="d-flex align-items-center"
+        [class.active]="isSame === item.id"
+        (click)="choseCountry(item)"
+      >
+        <img
+          class="ml-large mr-extra-large rounded-circle"
+          src="{{ item.flag }}"
+          alt="{{ item.name }}"
+        />
+        <span>{{ item.name }}</span>
+      </li>
+    </ng-container>
+  </ul>
+  </div>
+
+
+  <div class="header-contact-mobile">
+    <app-header-mobile-contact></app-header-mobile-contact>
+  </div>
 
   <div class="nav__hamburger">
     <app-hamburger (menuToggled)="onMenuToggle()"></app-hamburger>
   </div>
 
   <section
-  [classList]="isActive ? 'active mobile      ' : 'mobile'"
-  class="mobile"
+    [classList]="isActive ? 'active mobile      ' : 'mobile'"
+    class="mobile"
   >
-  <ul class="mobile__list">
-    <li [routerLinkActive]="'active'" class="active">
-      <a [routerLink]="['/bracknellTaxis/home']">home</a>
-    </li>
-    <li [routerLinkActive]="'active'">
-      <a [routerLink]="['/bracknellTaxis/airportTransfer']">airport transfer</a>
-    </li>
-    <li><a>testimonials</a></li>
-    <li><a>book a taxi</a></li>
-    <li><a>contact</a></li>
-  </ul>
+    <ul class="mobile__list">
+      <li [routerLinkActive]="'active'" class="active">
+        <a [routerLink]="['/bracknellTaxis/home']">home</a>
+      </li>
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']"
+          >airport transfer</a
+        >
+      </li>
+      <li><a>testimonials</a></li>
+      <li><a>book a taxi</a></li>
+      <li><a>contact</a></li>
+    </ul>
   </section>
-
-
 </nav>
-

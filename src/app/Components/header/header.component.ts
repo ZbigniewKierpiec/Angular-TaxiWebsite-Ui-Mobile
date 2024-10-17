@@ -10,17 +10,27 @@ import {
   ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
+
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StickyService } from '../../Services/sticky.service';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { HamburgerComponent } from '../hamburger/hamburger.component';
 import { FormsModule, NgModel } from '@angular/forms';
 import { HeaderMobileContactComponent } from "./header-mobile-contact/header-mobile-contact.component"; // <-- Import FormsModule
+import { Countries, Country } from '../Interfaces/interface';
+
+
+
+
+
+
+
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    RouterLink,
+  NgFor,
+  RouterLink,
     RouterLinkActive,
     NgClass,
     NgStyle,
@@ -42,12 +52,19 @@ export class HeaderComponent {
   isFixed = false;
   navbarOffsetTop: number;
   isActive: boolean = false;
+  languages: string = 'https://flagpedia.net/data/flags/w580/gb.webp';
+  isSame?: number;
+
+  isActiveList: boolean = false;
+
+  country:Country[]=Countries;
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private sticky: StickyService
   ) {
     this.navbarOffsetTop = this.getNavbarOffsetTop();
+
   }
 
   selectLi(index: number): void {
@@ -66,8 +83,9 @@ export class HeaderComponent {
     const markerPosition = selectedTabElement.offsetLeft;
     const markWidth = selectedTabElement.offsetWidth;
 
-    console.log('Marker Position:', markerPosition); // Debug: Log marker position
-    console.log('Marker Width:', markWidth); // Debug: Log marker width
+
+
+
 
     // Update the marker width
     this.markerWidth = markWidth;
@@ -101,8 +119,28 @@ export class HeaderComponent {
     const navbar = document.getElementById('navbar');
     return navbar ? navbar.offsetTop : 0;
 }
+//////////////////////////////////////
 
+// Method to handle country selection dropdown
+onCountrySelection() {
+  this.isActiveList = !this.isActiveList;
+  console.log(this.isActiveList)
+}
 
+// Method to choose a country and update the flag
+choseCountry(item: Country) {
+  console.log(item.lang);
+  this.isSame = item.id;
+  this.languages = item.flag;
+  this.isActiveList=! this.isActiveList;
+  // this.trans.switchLanguage(item.lang);
+
+  // Store the flag URL in local storage
+  localStorage.setItem('selectedCountryFlag', item.flag);
+  // window.location.reload();
+}
+
+/////////////////////////////////////
 @HostListener('window:scroll', [])
 onWindowScroll() {
     this.isFixed = window.pageYOffset > this.navbarOffsetTop;
