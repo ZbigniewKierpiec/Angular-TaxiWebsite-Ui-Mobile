@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  inject,
   NgModule,
   QueryList,
   Renderer2,
@@ -16,28 +17,25 @@ import { StickyService } from '../../Services/sticky.service';
 import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { HamburgerComponent } from '../hamburger/hamburger.component';
 import { FormsModule, NgModel } from '@angular/forms';
-import { HeaderMobileContactComponent } from "./header-mobile-contact/header-mobile-contact.component"; // <-- Import FormsModule
+import { HeaderMobileContactComponent } from './header-mobile-contact/header-mobile-contact.component'; // <-- Import FormsModule
 import { Countries, Country } from '../Interfaces/interface';
 
-
-
-
-
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-  NgFor,
-  RouterLink,
+    NgFor,
+    RouterLink,
     RouterLinkActive,
     NgClass,
     NgStyle,
     HamburgerComponent,
     FormsModule,
-    HeaderMobileContactComponent
-],
+    HeaderMobileContactComponent,
+    TranslateModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -57,14 +55,13 @@ export class HeaderComponent {
 
   isActiveList: boolean = false;
 
-  country:Country[]=Countries;
+  country: Country[] = Countries;
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private sticky: StickyService
   ) {
     this.navbarOffsetTop = this.getNavbarOffsetTop();
-
   }
 
   selectLi(index: number): void {
@@ -83,10 +80,6 @@ export class HeaderComponent {
     const markerPosition = selectedTabElement.offsetLeft;
     const markWidth = selectedTabElement.offsetWidth;
 
-
-
-
-
     // Update the marker width
     this.markerWidth = markWidth;
 
@@ -102,49 +95,43 @@ export class HeaderComponent {
     }
   }
 
-
-
-
-
   onMenuToggle() {
     console.log('Menu toggled in parent component!');
     // Perform any logic here when the hamburger menu is toggled
-    this.isActive =!this.isActive;
-    console.log(this.isActive)
+    this.isActive = !this.isActive;
+    console.log(this.isActive);
   }
-
-
 
   getNavbarOffsetTop(): number {
     const navbar = document.getElementById('navbar');
     return navbar ? navbar.offsetTop : 0;
-}
-//////////////////////////////////////
+  }
+  //////////////////////////////////////
 
-// Method to handle country selection dropdown
-onCountrySelection() {
-  this.isActiveList = !this.isActiveList;
-  console.log(this.isActiveList)
-}
+  // Method to handle country selection dropdown
+  onCountrySelection() {
+    this.isActiveList = !this.isActiveList;
+    console.log(this.isActiveList);
+  }
 
-// Method to choose a country and update the flag
-choseCountry(item: Country) {
-  console.log(item.lang);
-  this.isSame = item.id;
-  this.languages = item.flag;
-  this.isActiveList=! this.isActiveList;
-  // this.trans.switchLanguage(item.lang);
+  translate: TranslateService = inject(TranslateService);
+  // Method to choose a country and update the flag
+  choseCountry(item: Country) {
+    console.log(item.lang);
+    this.isSame = item.id;
+    this.languages = item.flag;
+    this.isActiveList = !this.isActiveList;
+    // this.trans.switchLanguage(item.lang);
 
-  // Store the flag URL in local storage
-  localStorage.setItem('selectedCountryFlag', item.flag);
-  // window.location.reload();
-}
+    // Store the flag URL in local storage
+    localStorage.setItem('selectedCountryFlag', item.flag);
+    // window.location.reload();
+    this.translate.use(item.lang);
+  }
 
-/////////////////////////////////////
-@HostListener('window:scroll', [])
-onWindowScroll() {
+  /////////////////////////////////////
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
     this.isFixed = window.pageYOffset > this.navbarOffsetTop;
-}
-
-
+  }
 }

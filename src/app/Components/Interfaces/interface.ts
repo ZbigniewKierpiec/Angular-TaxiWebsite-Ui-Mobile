@@ -10,13 +10,13 @@ export   const Countries: Country[] = [
     id: 1,
     flag: 'https://flagpedia.net/data/flags/w580/gb.webp',
     name: 'English',
-    lang: 'en',
+    lang: 'eng',
   },
   {
     id: 2,
     flag: 'https://flagpedia.net/data/flags/w580/es.webp',
     name: 'Spanish',
-    lang: 'es',
+    lang: 'esp',
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export   const Countries: Country[] = [
     id: 5,
     flag: 'https://flagpedia.net/data/flags/w580/it.webp',
     name: 'Italian',
-    lang: 'it',
+    lang: 'ita',
   },
   {
     id: 6,

@@ -62,21 +62,23 @@
   <div class="nav__menu">
     <ul class="nav__menu__list">
       <li #listItem (click)="selectLi(0)" class="nav__menu__list__item">
-        <a [routerLink]="['/bracknellTaxis/home']">home</a>
+        <a [routerLink]="['/bracknellTaxis/home']">{{
+          "Nav_Home" | translate
+        }}</a>
       </li>
       <li #listItem (click)="selectLi(1)" class="nav__menu__list__item">
-        <a [routerLink]="['/bracknellTaxis/airportTransfer']"
-          >airport transfer</a
-        >
+        <a [routerLink]="['/bracknellTaxis/airportTransfer']">{{
+          "Nav_Airport" | translate
+        }}</a>
       </li>
       <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
-        <a>testimonials</a>
+        <a>{{ "Nav_Testimonials" | translate }}</a>
       </li>
       <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
-        <a>book a taxi</a>
+        <a>{{ "Nav_Book" | translate }}</a>
       </li>
       <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
-        <a>contact</a>
+        <a>{{ "Nav_Contact" | translate }}</a>
       </li>
       <div
         [ngStyle]="{ 'width.px': markerWidth }"
@@ -92,42 +94,32 @@
     <span>7</span>
   </div>
 
-
   <div class="nav__board">
-    <div
-      (click)="onCountrySelection()"
-      class="nav__board__country-selection"
-    >
+    <div (click)="onCountrySelection()" class="nav__board__country-selection">
       <div class="nav__board__country-selection__flag">
         <img class="rounded-circle" src="{{ languages }}" alt="" />
       </div>
     </div>
-
-
   </div>
 
-  <div   [class.active]="isActiveList"       class="nav__lang-menu">
-    <ul
-   
-    class="header-country-list"
-  >
-    <ng-container *ngFor="let item of country">
-      <li
-        class="d-flex align-items-center"
-        [class.active]="isSame === item.id"
-        (click)="choseCountry(item)"
-      >
-        <img
-          class="ml-large mr-extra-large rounded-circle"
-          src="{{ item.flag }}"
-          alt="{{ item.name }}"
-        />
-        <span>{{ item.name }}</span>
-      </li>
-    </ng-container>
-  </ul>
+  <div [class.active]="isActiveList" class="nav__lang-menu">
+    <ul class="header-country-list">
+      <ng-container *ngFor="let item of country">
+        <li
+          class="d-flex align-items-center"
+          [class.active]="isSame === item.id"
+          (click)="choseCountry(item)"
+        >
+          <img
+            class="ml-large mr-extra-large rounded-circle"
+            src="{{ item.flag }}"
+            alt="{{ item.name }}"
+          />
+          <span>{{ item.name }}</span>
+        </li>
+      </ng-container>
+    </ul>
   </div>
-
 
   <div class="header-contact-mobile">
     <app-header-mobile-contact></app-header-mobile-contact>
@@ -143,16 +135,24 @@
   >
     <ul class="mobile__list">
       <li [routerLinkActive]="'active'" class="active">
-        <a [routerLink]="['/bracknellTaxis/home']">home</a>
+        <a [routerLink]="['/bracknellTaxis/home']">{{
+          "Nav_Home" | translate
+        }}</a>
       </li>
       <li [routerLinkActive]="'active'">
         <a [routerLink]="['/bracknellTaxis/airportTransfer']"
-          >airport transfer</a
-        >
+          >{{ "Nav_Airport" | translate }}
+        </a>
       </li>
-      <li><a>testimonials</a></li>
-      <li><a>book a taxi</a></li>
-      <li><a>contact</a></li>
+      <li>
+        <a>{{ "Nav_Testimonials" | translate }} </a>
+      </li>
+      <li>
+        <a>{{ "Nav_Book" | translate }}</a>
+      </li>
+      <li>
+        <a>{{ "Nav_Contact" | translate }}</a>
+      </li>
     </ul>
   </section>
 </nav>
