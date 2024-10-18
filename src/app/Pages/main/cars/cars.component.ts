@@ -1,13 +1,15 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import AOS from 'aos'; // Import AOS
 @Component({
   selector: 'app-cars',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './cars.component.html',
   styleUrl: './cars.component.scss'
 })
 export class CarsComponent implements AfterViewInit{
+  translate: TranslateService = inject(TranslateService);
   ngAfterViewInit(): void {
     AOS.init({
       duration: 1700, // Animation duration in milliseconds

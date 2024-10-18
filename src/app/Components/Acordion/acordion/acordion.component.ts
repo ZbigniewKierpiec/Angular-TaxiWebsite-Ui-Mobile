@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   trigger,
   state,
@@ -8,10 +8,11 @@ import {
 } from '@angular/animations';
 
 import { CommonModule} from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-acordion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,TranslateModule],
   templateUrl: './acordion.component.html',
   styleUrl: './acordion.component.scss',
 
@@ -39,7 +40,7 @@ import { CommonModule} from '@angular/common';
 
 })
 export class AcordionComponent {
-
+  translate: TranslateService = inject(TranslateService);
   sections = [
     {
       id: 0,

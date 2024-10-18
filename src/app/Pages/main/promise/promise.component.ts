@@ -11,6 +11,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CountryService } from '../../../Services/country.service';
 @Component({
   selector: 'app-promise',
   standalone: true,
@@ -20,7 +21,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class PromiseComponent implements OnInit, AfterViewInit {
   translate: TranslateService = inject(TranslateService);
-  constructor(private router: Router) {
+  constructor(private router: Router, private countryService: CountryService) {
     AOS.refresh(); // Refresh AOS after view is initialized
     AOS.refreshHard();
   }
@@ -33,6 +34,15 @@ export class PromiseComponent implements OnInit, AfterViewInit {
       once: false, // Whether animations should happen only once
       anchorPlacement: 'top-bottom',
     });
+
+
+    this.countryService.getLanguageObservable().subscribe(lang => {
+      // Update the current language
+      console.log('Language changed to:', lang);
+
+  });
+
+
   }
 
   ngAfterViewInit() {
@@ -45,5 +55,19 @@ export class PromiseComponent implements OnInit, AfterViewInit {
       once: false, // Whether animations should happen only once
       anchorPlacement: 'top-bottom',
     });
+
+
+
+    this.countryService.getLanguageObservable().subscribe(lang => {
+      // Update the current language
+      console.log('Language changed to:', lang);
+
+  });
+
+
+
+
+
+
   }
 }

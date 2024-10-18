@@ -20,6 +20,8 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { HeaderMobileContactComponent } from './header-mobile-contact/header-mobile-contact.component'; // <-- Import FormsModule
 import { Countries, Country } from '../Interfaces/interface';
 
+
+import { CountryService } from '../../Services/country.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -34,7 +36,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     HamburgerComponent,
     FormsModule,
     HeaderMobileContactComponent,
-    TranslateModule,
+    TranslateModule
+
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -59,7 +62,8 @@ export class HeaderComponent {
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
-    private sticky: StickyService
+    private sticky: StickyService,
+    private countryService:CountryService
   ) {
     this.navbarOffsetTop = this.getNavbarOffsetTop();
   }
@@ -121,12 +125,15 @@ export class HeaderComponent {
     this.isSame = item.id;
     this.languages = item.flag;
     this.isActiveList = !this.isActiveList;
-    // this.trans.switchLanguage(item.lang);
+
 
     // Store the flag URL in local storage
-    localStorage.setItem('selectedCountryFlag', item.flag);
+    // localStorage.setItem('selectedCountryFlag', item.flag);
     // window.location.reload();
-    this.translate.use(item.lang);
+
+    this.countryService.setLanguage(item.lang);
+
+
   }
 
   /////////////////////////////////////

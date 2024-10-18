@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AcordionComponent } from "../../../Components/Acordion/acordion/acordion.component";
 import {
   trigger,
@@ -9,11 +9,12 @@ import {
 } from '@angular/animations';
 import { NgClass, NgFor } from '@angular/common';
 import { Acordion2Component } from "../../../Components/Acordion/acordion2/acordion2.component";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-frequently-questions',
   standalone: true,
-  imports: [NgFor, NgClass, AcordionComponent, Acordion2Component],
+  imports: [NgFor, NgClass, AcordionComponent, Acordion2Component , TranslateModule],
   templateUrl: './frequently-questions.component.html',
   styleUrl: './frequently-questions.component.scss',
   animations: [
@@ -26,7 +27,7 @@ import { Acordion2Component } from "../../../Components/Acordion/acordion2/acord
   ],
 })
 export class FrequentlyQuestionsComponent {
-
+  translate: TranslateService = inject(TranslateService);
   sections = [
     {
       id: 0,
