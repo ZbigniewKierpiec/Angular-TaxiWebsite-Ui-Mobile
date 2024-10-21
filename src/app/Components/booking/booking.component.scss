@@ -1,9 +1,11 @@
 .booking {
+  height: 100vh;
 
-  height: 70vh;
   background-color: #8eb98f;
-  button , input{
-    border-radius: .5rem;
+
+  button,
+  input {
+    border-radius: 0.5rem;
   }
   &__image {
     width: 30rem;
@@ -12,100 +14,103 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    img{
+    img {
       width: 50%;
       display: block;
       object-fit: cover;
-
     }
   }
   &__quote {
     width: 35rem;
-    height: 50rem;
+
     background-color: skyblue;
+
     margin: 0 auto;
-    border-radius: .7rem;
+    border-radius: 0.7rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows:repeat(7,1fr);
+    grid-template-rows: repeat(9, 5rem);
+
     grid-gap: 1rem;
-    h1{
+    padding: 1rem 1rem;
+
+    h1 {
       text-align: center;
       padding: 2rem 1.5rem;
       font-size: 2rem;
       color: var(--color1);
-
     }
-    &__way{
+    &__way {
       padding: 0 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       grid-gap: 1rem;
-      button{
+      button {
         border: none;
         outline: none;
-        font-size: 2rem;
-        padding: .5rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+        background-color: #8eb98f;
         text-transform: capitalize;
       }
     }
-    &__pickup{
+    &__pickup {
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: 1fr .2fr;
+      grid-template-columns: 1fr 0.2fr;
       grid-template-rows: 1fr;
       grid-gap: 1rem;
       align-content: space-between;
-      input{
-         border: none;
-         outline: none;
-         background-color:#8EB98F;
-         padding: 0 1rem;
-         &::placeholder{
+      input {
+        border: none;
+        outline: none;
+        background-color: #8eb98f;
+        padding: 0 1rem;
+        font-size: 1.3rem;
+        &::placeholder {
           color: white;
-
-         }
-
+        }
       }
-      button{
+      button {
         width: 7rem;
         border: none;
         outline: none;
-        font-size: 2rem;
-        padding: .5rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
         text-transform: capitalize;
+        background-color: #8eb98f;
       }
     }
-    &__via{
+    &__via {
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: 1fr .2fr;
+      grid-template-columns: 1fr 0.2fr;
       grid-template-rows: 1fr;
       grid-gap: 1rem;
       align-content: space-between;
-      input{
-         border: none;
-         outline: none;
-         background-color:#8EB98F;
-         padding: 0 1rem;
-         &::placeholder{
+      input {
+        border: none;
+        outline: none;
+        background-color: #8eb98f;
+        padding: 0 1rem;
+        font-size: 1.3rem;
+        &::placeholder {
           color: white;
-
-         }
-
+        }
       }
-      button{
+      button {
         width: 7rem;
         border: none;
         outline: none;
-        font-size: 2rem;
-        padding: .5rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
         text-transform: capitalize;
+        background-color: #8eb98f;
         color: red;
       }
     }
-    &__destination{
+    &__destination {
       padding: 0 1rem;
       display: grid;
       grid-template-columns: 1fr;
@@ -113,19 +118,121 @@
       grid-gap: 1rem;
       align-content: space-between;
 
-
-      input{
+      input {
         border: none;
         outline: none;
-        background-color:#8EB98F;
+        background-color: #8eb98f;
         padding: 0 1rem;
-        &::placeholder{
-         color: white;
+        font-size: 1.3rem;
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+    &__date {
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      input {
+        border: none;
+        outline: none;
+        background-color: #8eb98f;
+        padding: 0 1rem;
+        &#datetime-input {
+          font-size: 1.3rem;
+          color: white;
+        }
+      }
+    }
+    &__passengers {
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+      &__select-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        select {
+          width: 100%;
+          height: 100%;
+          padding: 0 1rem;
+          font-size: 1.3rem;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-color: #8eb98f;
+          border: none;
+          position: relative !important;
+          z-index: 1;
 
         }
 
-     }
-    }
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          z-index: 9 !important;
+          top: 50%;
+          right: 5%;
+          transform: translate(-50%, -50%);
+          width: 0;
+          height: 0;
 
+          border-left: 0.5rem solid transparent;
+          border-right: 0.5rem solid transparent;
+          border-top: 0.5rem solid black; /* This creates the triangle (arrow) */
+          pointer-events: none; /* Prevent interaction with the arrow */
+        }
+      }
+    }
+    &__greet {
+      display: grid;
+      justify-items: space-between;
+      align-items: center;
+
+      grid-template-columns: 1rem 1fr;
+      grid-template-rows: 1fr;
+      padding: 0 1rem;
+      text-wrap: balance;
+      grid-gap: 2rem;
+
+      cursor: pointer;
+      input {
+        -webkit-appearance: none; /* Remove default appearance */
+        appearance: none; /* Remove default appearance */
+        width: 20px; /* Set desired width */
+        height: 20px; /* Set desired height */
+        border: 2px solid #007bff; /* Add a border */
+        border-radius: 3px; /* Optional: make it rounded */
+        position: relative; /* Required for the custom checkmark */
+        cursor: pointer; /* Change cursor to pointer */
+        &:checked {
+          background-color: var(--gold); /* Change background on checked */
+          border: 2px solid var(--gold); /* Match border color */
+        }
+      }
+      label {
+        display: inline-block;
+        text-wrap: pretty;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+    }
+    &__get {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1rem;
+      background-color: #8eb98f;
+      h1 {
+        font-size: 2rem;
+        text-transform: capitalize;
+      }
+    }
   }
 }

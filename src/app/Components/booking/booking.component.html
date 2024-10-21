@@ -9,21 +9,70 @@
     </div>
     <div class="booking__quote__pickup">
       <input type="text" placeholder="Pickup" name="" id="" />
-      <button  (click)="viaFun()"    >via</button>
+      <button (click)="viaFun()">via</button>
     </div>
     <ng-container *ngIf="via">
-      <div class="booking__quote__via">
+      <div
+        [classList]="
+          via
+            ? 'animate__animated animate__fadeInDown booking__quote__via'
+            : '  booking__quote__via'
+        "
+        class="booking__quote__via"
+      >
         <input type="text" placeholder="Via" name="via" id="via" />
-        <button (click)="closeVia()" ><i class="fa-solid fa-trash-can"></i></button>
+        <button (click)="closeVia()">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
       </div>
     </ng-container>
 
-     <div class="booking__quote__destination">
-      <input placeholder="Destination" type="text">
-     </div>
-<div class="booking__quote__date">
-  
-</div>
+    <div class="booking__quote__destination">
+      <input placeholder="Destination" type="text" />
+    </div>
+    <div class="booking__quote__date">
+      <input
+        placeholder="Pickup"
+        type="datetime-local"
+        name=""
+        id="datetime-input"
+      />
+    </div>
 
+    <div class="booking__quote__passengers">
+      <div class="booking__quote__passengers__select-wrapper">
+        <select name="" id="">
+          <option value="1">Passengers 1</option>
+          <option value="2">Passengers 2</option>
+          <option value="3">Passengers 3</option>
+          <option value="4">Passengers 4</option>
+          <option value="5">Passengers 5</option>
+          <option value="6">Passengers 6</option>
+          <option value="7">Passengers 7</option>
+        </select>
+      </div>
+      <div class="booking__quote__passengers__select-wrapper">
+        <select name="" id="">
+          <option value="1">Luggages 1</option>
+          <option value="2">Luggages 2</option>
+          <option value="3">Luggages 3</option>
+          <option value="4">Luggages 4</option>
+          <option value="5">Luggages 5</option>
+          <option value="6">Luggages 6</option>
+          <option value="7">Luggages 7</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="booking__quote__greet">
+      <input type="checkbox" name="" id="greet" />
+      <label for="greet">
+        Meet & Greet Services: An additional charge of
+        <strong>£15.00</strong> applies in all cases.
+      </label>
+    </div>
+    <div class="booking__quote__get">
+      <h1>get quote</h1>
+    </div>
   </div>
 </section>
