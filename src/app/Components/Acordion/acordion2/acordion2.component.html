@@ -7,7 +7,7 @@
       [class.active]="i === expandedSectionIndex"
       class="accordion-section"
     >
-      <p>{{ section.title }}</p>
+      <p>{{ section.title | translate }}</p>
 
       <i
         [class]="
@@ -23,7 +23,7 @@
       [@slideInOut]="isSectionExpanded(i) ? 'in' : 'out'"
       class="accordion-content"
     >
-      <p>{{ section.content }}</p>
+      <p>{{ section.content | translate }}</p>
     </div>
   </div>
 </div>

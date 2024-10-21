@@ -33,5 +33,21 @@
   "Plan_f-1": "Proms",
   "Plan_f-2": "Vous voulez arriver à votre bal de promo avec style ? Bracknell Executive Travel propose des services de voiture élégants pour rendre votre entrée inoubliable. Profitez du trajet avec vos amis et créez des souvenirs durables.",
   "Frequently_Questions_a-1": "Questions Fréquemment Posées",
-  "Frequently_Questions_a-2": "Cette rubrique peut fournir des informations précieuses sur nos services, aidant à créer un lien plus fort entre nous et nos clients."
+  "Frequently_Questions_a-2": "Cette rubrique peut fournir des informations précieuses sur nos services, aidant à créer un lien plus fort entre nous et nos clients.",
+  "book_a-1": "Comment puis-je réserver un taxi ?",
+  "book_a-2": "Vous pouvez réserver un taxi via notre application mobile, en appelant notre centre de dispatch ou sur notre site web. Il suffit d'indiquer votre lieu de prise en charge et votre destination, et nous vous enverrons un taxi.",
+  "book_b-1": "Quelles méthodes de paiement acceptez-vous ?",
+  "book_b-2": "Nous acceptons différentes méthodes de paiement, y compris les espèces, les cartes de crédit/débit et les options de paiement mobile comme Apple Pay et Google Pay.",
+  "book_c-1": "Vos chauffeurs sont-ils licenciés et assurés ?",
+  "book_c-2": "Oui, tous nos chauffeurs sont entièrement licenciés, assurés et ont subi des vérifications de fonds approfondies pour garantir votre sécurité.",
+  "book_d-1": "Que dois-je faire si j'ai oublié quelque chose dans le taxi ?",
+  "book_d-2": "Si vous avez oublié un objet dans le taxi, veuillez contacter notre service client dès que possible avec les détails de votre trajet. Nous ferons de notre mieux pour vous aider à récupérer vos affaires.",
+  "book_e-1": "Proposez-vous des trajets vers l'aéroport ?",
+  "book_e-2": "Oui, nous offrons des services de transfert vers l'aéroport. Vous pouvez réserver un trajet vers et depuis l'aéroport via notre site web ou en nous contactant directement.",
+  "book_f-1": "Y a-t-il des frais d'annulation ?",
+  "book_f-2": "Les annulations effectuées dans un certain délai avant votre prise en charge prévue sont généralement gratuites. Cependant, les annulations tardives peuvent entraîner des frais minimes. Veuillez consulter notre politique d'annulation pour plus de détails.",
+  "book_g-1": "Que dois-je faire si j'ai une plainte ?",
+  "book_g-2": "Si vous avez des plaintes ou des commentaires, veuillez contacter notre équipe de service client. Nous valorisons votre avis et nous efforçons d'améliorer nos services.",
+  "book_h-1": "Comment puis-je trouver mon chauffeur à l'aéroport ?",
+  "book_h-2": "Après votre arrivée, veuillez vérifier la zone de prise en charge désignée pour les taxis à l'aéroport. Votre chauffeur attendra normalement avec un panneau affichant votre nom. Nous surveillons toujours les vols pour garantir des prises en charge à l'heure. Si vous avez des difficultés à les localiser, veuillez appeler notre centre de dispatch pour obtenir de l'aide."
 }

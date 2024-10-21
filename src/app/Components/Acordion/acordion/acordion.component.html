@@ -1,12 +1,12 @@
 <div class="accordion">
-  <div *ngFor="let section of sections; let i = index" class="body">
+  <div *ngFor="let sections of sections; let i = index" class="body">
     <div
       (click)="toggleSection(i)"
       [ngClass]="{ 'custom-class': i == 0 }"
       [class.active]="i === expandedSectionIndex"
       class="accordion-section"
     >
-      <p>{{ section.title }}</p>
+      <p>{{ sections.title |  translate }}</p>
 
       <i
         [class]="
@@ -22,7 +22,7 @@
       [@slideInOut]="isSectionExpanded(i) ? 'in' : 'out'"
       class="accordion-content"
     >
-      <p>{{ section.content }}</p>
+      <p>{{ sections.content | translate }}</p>
     </div>
   </div>
 </div>
