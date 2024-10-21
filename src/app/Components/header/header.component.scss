@@ -237,6 +237,7 @@
 
       @include respond(phone) {
         font-size: .8rem;
+       word-spacing: -.2rem;
 
       }
     }

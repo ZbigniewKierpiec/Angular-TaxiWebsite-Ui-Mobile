@@ -71,28 +71,30 @@
 }
 
 
+
+
 .accordion {
   width: 50%; /* Set your desired width */
   width: 100%;
+
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   border-radius: 1.3rem;
   padding: 1rem 3rem;
-}
 
-// .body {
-//   width: 95%;
-//   height: 90%;
-// }
+  @include respond(tab-port) {
+    // height: 50vh;
+  }
+}
 
 .accordion-section {
   width: 100%;
   position: relative;
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 12;
+  z-index: 12 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -100,11 +102,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.323);
 
   height: 10rem;
+
   padding: 0 2rem;
+
   @include respond(tab-port) {
     height: 5rem;
   }
-
 
   &.active {
     background-color: rgb(234, 225, 225);
@@ -128,17 +131,29 @@
 
 .accordion-content {
   background-color: #f1f1f1;
-  background-color:#8EB98F !important;
+  background-color: #8eb98f !important;
   display: flex;
   justify-content: center;
   align-items: center;
 
   font-weight: bolder;
   padding: 0 2rem;
+
   cursor: pointer;
+
+  @include respond(tab-port) {
+    justify-content: center;
+    align-items: center;
+  }
   p {
-   text-wrap: pretty;
     font-size: 1.7rem;
+    text-wrap: pretty;
+    margin-top: 2rem;
+    @include respond(tab-port) {
+      margin-top: 1rem;
+
+      // margin-bottom: 1.9rem;
+    }
   }
 }
 .custom-class {

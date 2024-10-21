@@ -1,0 +1,29 @@
+<section class="booking">
+  <div class="booking__image">
+    <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
+  </div>
+  <div class="booking__quote">
+    <h1>Get an Instant Quote</h1>
+    <div class="booking__quote__way">
+      <button>one way</button> <button>return</button>
+    </div>
+    <div class="booking__quote__pickup">
+      <input type="text" placeholder="Pickup" name="" id="" />
+      <button  (click)="viaFun()"    >via</button>
+    </div>
+    <ng-container *ngIf="via">
+      <div class="booking__quote__via">
+        <input type="text" placeholder="Via" name="via" id="via" />
+        <button (click)="closeVia()" ><i class="fa-solid fa-trash-can"></i></button>
+      </div>
+    </ng-container>
+
+     <div class="booking__quote__destination">
+      <input placeholder="Destination" type="text">
+     </div>
+<div class="booking__quote__date">
+  
+</div>
+
+  </div>
+</section>

@@ -75,7 +75,9 @@
         <a>{{ "Nav_Testimonials" | translate }}</a>
       </li>
       <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
-        <a>{{ "Nav_Book" | translate }}</a>
+        <a [routerLink]="['/bracknellTaxis/booking']">{{
+          "Nav_Book" | translate
+        }}</a>
       </li>
       <li #listItem (click)="selectLi(4)" class="nav__menu__list__item">
         <a>{{ "Nav_Contact" | translate }}</a>

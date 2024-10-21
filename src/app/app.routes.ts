@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AirportTransferComponentComponent } from './Pages/airport-transfer-component/airport-transfer-component.component';
 import { MainComponent } from './Pages/main/main.component';
+import { BookingComponent } from './Components/booking/booking.component';
 
 // export const routes: Routes = [
 //   { path: '', redirectTo: 'bracknellTaxis/main', pathMatch: 'full' },
@@ -17,4 +18,5 @@ export const routes: Routes = [
     path: 'bracknellTaxis/airportTransfer',
     component: AirportTransferComponentComponent,
   },
+  { path: 'bracknellTaxis/booking', component: BookingComponent },
 ];

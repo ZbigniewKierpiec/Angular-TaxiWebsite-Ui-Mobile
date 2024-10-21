@@ -1,0 +1,131 @@
+.booking {
+
+  height: 70vh;
+  background-color: #8eb98f;
+  button , input{
+    border-radius: .5rem;
+  }
+  &__image {
+    width: 30rem;
+    min-height: 20vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 50%;
+      display: block;
+      object-fit: cover;
+
+    }
+  }
+  &__quote {
+    width: 35rem;
+    height: 50rem;
+    background-color: skyblue;
+    margin: 0 auto;
+    border-radius: .7rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:repeat(7,1fr);
+    grid-gap: 1rem;
+    h1{
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 2rem;
+      color: var(--color1);
+
+    }
+    &__way{
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+      button{
+        border: none;
+        outline: none;
+        font-size: 2rem;
+        padding: .5rem 1rem;
+        text-transform: capitalize;
+      }
+    }
+    &__pickup{
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr .2fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+      align-content: space-between;
+      input{
+         border: none;
+         outline: none;
+         background-color:#8EB98F;
+         padding: 0 1rem;
+         &::placeholder{
+          color: white;
+
+         }
+
+      }
+      button{
+        width: 7rem;
+        border: none;
+        outline: none;
+        font-size: 2rem;
+        padding: .5rem 1rem;
+        text-transform: capitalize;
+      }
+    }
+    &__via{
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr .2fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+      align-content: space-between;
+      input{
+         border: none;
+         outline: none;
+         background-color:#8EB98F;
+         padding: 0 1rem;
+         &::placeholder{
+          color: white;
+
+         }
+
+      }
+      button{
+        width: 7rem;
+        border: none;
+        outline: none;
+        font-size: 2rem;
+        padding: .5rem 1rem;
+        text-transform: capitalize;
+        color: red;
+      }
+    }
+    &__destination{
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 1rem;
+      align-content: space-between;
+
+
+      input{
+        border: none;
+        outline: none;
+        background-color:#8EB98F;
+        padding: 0 1rem;
+        &::placeholder{
+         color: white;
+
+        }
+
+     }
+    }
+
+  }
+}

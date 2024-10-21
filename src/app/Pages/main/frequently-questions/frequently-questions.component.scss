@@ -71,8 +71,9 @@
 
 .questions {
   position: relative;
-  height: 70vh;
+  // min-height: 70vh;
   // height: 80vh;
+  height: auto;
   height: fit-content;
   // background-image: linear-gradient(to top, #faf4f4, #f8ebeb, #f5e2e2, #f3dada, #f0d1d1);
   padding: 3rem 5rem;

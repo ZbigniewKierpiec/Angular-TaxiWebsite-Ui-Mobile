@@ -72,16 +72,16 @@
 .accordion {
   width: 50%; /* Set your desired width */
   width: 100%;
+
   background-color: #f1f1f1;
   background-color: #8eb98f !important;
   border-radius: 1.3rem;
   padding: 1rem 3rem;
-}
 
-// .body {
-//   width: 95%;
-//   height: 90%;
-// }
+  @include respond(tab-port) {
+    // height: 50vh;
+  }
+}
 
 .accordion-section {
   width: 100%;
@@ -98,6 +98,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.323);
 
   height: 10rem;
+
   padding: 0 2rem;
 
   @include respond(tab-port) {
@@ -137,14 +138,17 @@
   cursor: pointer;
 
   @include respond(tab-port) {
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
   }
   p {
     font-size: 1.7rem;
     text-wrap: pretty;
+    margin-top: 2rem;
     @include respond(tab-port) {
       margin-top: 1rem;
-      margin-bottom: 1.9rem;
+
+      // margin-bottom: 1.9rem;
     }
   }
 }
