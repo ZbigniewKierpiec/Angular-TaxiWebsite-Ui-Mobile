@@ -70,7 +70,6 @@
 }
 
 .booking {
-  position: relative;
   --active: #28a745;
   height: 100vh;
   height: 70vh;
@@ -84,14 +83,6 @@
   input {
     border-radius: 0.5rem;
   }
-
-  @include respond(tab-port) {
-    padding-top: 2rem;
-    align-items: flex-start;
-    min-height: 100vh;
-    height: max-content;
-  }
-
   &__image {
     position: absolute;
     right: 50%;
@@ -114,16 +105,7 @@
 
     display: flex;
     justify-content: space-evenly;
-    @include respond(tab-port) {
-      height: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      justify-items: center;
-      align-items: center;
-      grid-row-gap: 2rem;
 
-    }
     &__resoult {
       width: 30%;
       display: grid;
@@ -131,22 +113,13 @@
       grid-template-rows: 10rem 10rem;
       grid-row-gap: 2rem;
       background-color: transparent;
-      transition: all 0.2s linear;
-      display: none;
-      opacity: 0;
-      @include respond(tab-port) {
-        width: 85%;
-      }
-      &.active {
-        display: block;
-        opacity: 1;
-      }
 
       &__car {
         background-color: black;
         display: grid;
         grid-template-columns: 12rem 1fr;
         background-color: white;
+
         &__left {
           display: flex;
           justify-content: center;
@@ -156,6 +129,10 @@
             object-fit: cover;
             width: 70%;
             transform: scaleX(-1);
+            &.hun {
+              transform: scaleX(1);
+              width: 80%;
+            }
           }
         }
         &__right {
@@ -167,6 +144,7 @@
             justify-content: center;
             align-items: center;
             background-color: rgb(244, 236, 236);
+
             h1 {
               font-size: 1.4rem;
               text-align: center;
@@ -183,6 +161,9 @@
               grid-template-rows: 1fr;
               padding: 0.5rem 0;
               grid-gap: 1rem;
+              @include respond(tab-port) {
+                padding: 0.5rem 0;
+              }
               &__box {
                 display: grid;
                 grid-template-columns: 1fr;
@@ -192,6 +173,12 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
+                  @include respond(tab-port) {
+                    align-items: flex-start;
+                    h1 {
+                      font-weight: bolder;
+                    }
+                  }
                 }
                 &__bottom {
                   display: flex;
@@ -217,6 +204,9 @@
 
               align-items: center;
               justify-content: center;
+              @include respond(tab-port) {
+                padding: 0;
+              }
               button {
                 border: none;
                 outline: none;
@@ -232,10 +222,19 @@
                 span {
                   text-transform: capitalize;
                   font-weight: bolder;
+                  @include respond(tab-port) {
+                    font-size: 1.3rem;
+                  }
                 }
                 data {
                   font-size: 1.3rem;
                   font-weight: bolder;
+                  @include respond(tab-port) {
+                    font-size: 1.4rem;
+                  }
+                }
+                @include respond(tab-port) {
+                  height: 100%;
                 }
               }
             }
@@ -257,9 +256,7 @@
 
     grid-gap: 1rem;
     padding: 1rem 1rem;
-    @include respond(tab-port) {
-      width: 85%;
-    }
+
     h1 {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -496,23 +493,4 @@
       }
     }
   }
-}
-
-
-
-iframe
-{
-  object-fit: cover;
-  position: absolute;
-  top: 2.9rem;
-  right:-5%;
-  bottom: 0;
-
-}
-
-
-app-map-display{
-  width: 70%;
-  height:100%;
-
 }

@@ -2,77 +2,200 @@
   <div class="booking__image">
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
-  <div class="booking__quote">
-    <h1>Get an Instant Quote</h1>
-    <div class="booking__quote__way">
-      <button>one way</button> <button>return</button>
-    </div>
-    <div class="booking__quote__pickup">
-      <input type="text" placeholder="Pickup" name="" id="" />
-      <button (click)="viaFun()">via</button>
-    </div>
-    <ng-container *ngIf="via">
-      <div
-        [classList]="
-          via
-            ? 'animate__animated animate__fadeInDown booking__quote__via'
-            : '  booking__quote__via'
-        "
-        class="booking__quote__via"
-      >
-        <input type="text" placeholder="Via" name="via" id="via" />
-        <button (click)="closeVia()">
-          <i class="fa-solid fa-trash-can"></i>
+  <div class="booking__wraper">
+    <div
+      [classList]="
+        bookingQuote
+          ? 'animate__animated animate__fadeInRight booking__quote'
+          : 'booking__quote'
+      "
+      class="booking__quote"
+    >
+      <h1>Get an Instant Quote</h1>
+      <div class="booking__quote__way">
+        <button
+          [ngClass]="{ active: trip === 'one' }"
+          (click)="activeOne('one')"
+          class="actve"
+        >
+          one way
+        </button>
+        <button
+          [ngClass]="{ active: trip === 'return' }"
+          (click)="activeOne('return')"
+          class="active"
+        >
+          return
         </button>
       </div>
-    </ng-container>
+      <div class="booking__quote__pickup">
+        <app-autocomplete (placeChanged)="auto($event)"></app-autocomplete>
+        <!-- <input
+          #pickUpField
+          type="text"
+          [placeholder]="placeholder"
+          aria-label="Address"
+        /> -->
 
-    <div class="booking__quote__destination">
-      <input placeholder="Destination" type="text" />
-    </div>
-    <div class="booking__quote__date">
-      <input
-        placeholder="Pickup"
-        type="datetime-local"
-        name=""
-        id="datetime-input"
-      />
-    </div>
-
-    <div class="booking__quote__passengers">
-      <div class="booking__quote__passengers__select-wrapper">
-        <select name="" id="">
-          <option value="1">Passengers 1</option>
-          <option value="2">Passengers 2</option>
-          <option value="3">Passengers 3</option>
-          <option value="4">Passengers 4</option>
-          <option value="5">Passengers 5</option>
-          <option value="6">Passengers 6</option>
-          <option value="7">Passengers 7</option>
-        </select>
+        <button (click)="viaFun()">via</button>
       </div>
-      <div class="booking__quote__passengers__select-wrapper">
-        <select name="" id="">
-          <option value="1">Luggages 1</option>
-          <option value="2">Luggages 2</option>
-          <option value="3">Luggages 3</option>
-          <option value="4">Luggages 4</option>
-          <option value="5">Luggages 5</option>
-          <option value="6">Luggages 6</option>
-          <option value="7">Luggages 7</option>
-        </select>
+      <ng-container *ngIf="via">
+        <div
+          [classList]="
+            via
+              ? 'animate__animated animate__fadeInDown booking__quote__via'
+              : '  booking__quote__via'
+          "
+          class="booking__quote__via"
+        >
+          <input type="text" placeholder="Via" name="via" id="via" />
+          <button (click)="closeVia()">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+      </ng-container>
+
+      <div class="booking__quote__destination">
+        <!-- <input     #destinUpField     [placeholder]="placeholder2"   type="text" /> -->
+        <app-autocomplete2 (placeChanged)="auto2($event)"></app-autocomplete2>
+      </div>
+      <div class="booking__quote__date">
+        <input type="datetime-local" name="" id="datetime-input" />
+      </div>
+      <ng-container *ngIf="trip === 'return'">
+        <div
+          [ngClass]="{
+            'animate__animated animate__fadeInLeft ooking__quote__return':
+              trip === 'return'
+          }"
+          class="booking__quote__return"
+        >
+          <input
+            placeholder="Pickup"
+            type="datetime-local"
+            name=""
+            id="datetime-input"
+          />
+        </div>
+      </ng-container>
+
+      <div class="booking__quote__passengers">
+        <div class="booking__quote__passengers__select-wrapper">
+          <select name="" id="">
+            <option value="1">Passengers 1</option>
+            <option value="2">Passengers 2</option>
+            <option value="3">Passengers 3</option>
+            <option value="4">Passengers 4</option>
+            <option value="5">Passengers 5</option>
+            <option value="6">Passengers 6</option>
+            <option value="7">Passengers 7</option>
+          </select>
+        </div>
+        <div class="booking__quote__passengers__select-wrapper">
+          <select name="" id="">
+            <option value="1">Luggages 1</option>
+            <option value="2">Luggages 2</option>
+            <option value="3">Luggages 3</option>
+            <option value="4">Luggages 4</option>
+            <option value="5">Luggages 5</option>
+            <option value="6">Luggages 6</option>
+            <option value="7">Luggages 7</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="booking__quote__greet">
+        <input type="checkbox" name="" id="greet" />
+        <label for="greet">
+          Meet & Greet Services: An additional charge of
+          <strong>£15.00</strong> applies in all cases.
+        </label>
+      </div>
+      <div (click)="getQuote()" class="booking__quote__get">
+        <h1>get quote</h1>
       </div>
     </div>
 
-    <div class="booking__quote__greet">
-      <input type="checkbox" name="" id="greet" />
-      <label for="greet">
-        Meet & Greet Services: An additional charge of
-        <strong>£15.00</strong> applies in all cases.
-      </label>
-    </div>
-    <div class="booking__quote__get">
-      <h1>get quote</h1>
-    </div>
+    <section [class.active]="bookingQuote" class="booking__wraper__resoult">
+      <!-- <div class="booking__wraper__resoult__car">
+
+        <div class="booking__wraper__resoult__car__left">
+          <img
+            src="/assets/26-264798_new-2018-mercedes-benz-e-class-e-300.png"
+            alt=""
+          />
+        </div>
+        <div class="booking__wraper__resoult__car__right">
+          <div class="booking__wraper__resoult__car__right__top">
+            <h1>1 x Saloon</h1>
+          </div>
+          <div class="booking__wraper__resoult__car__right__bottom">
+            <div
+              class="booking__wraper__resoult__car__right__bottom__spec"
+            >
+
+            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
+                <h1>4</h1>
+              </div>
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
+                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
+                  <i class="fa-solid fa-person"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
+                <h1>4</h1>
+              </div>
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
+                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
+                  <i class="fa-solid fa-suitcase"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
+                <h1>2</h1>
+              </div>
+              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
+                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+            <div
+              class="booking__wraper__resoult__car__right__bottom__book"
+            >
+            <button>
+              <data value="9.00">£9.00</data>
+              <span>book now</span>
+            </button>
+
+
+          </div>
+          </div>
+        </div>
+      </div> -->
+
+      <app-car-boobing-quote
+        [active]="bookingQuote"
+        [image]="'/assets/26-264798_new-2018-mercedes-benz-e-class-e-300.png'"
+        price="9.00"
+      ></app-car-boobing-quote>
+      <br />
+      <app-car-boobing-quote
+        [active]="bookingQuote"
+        [image]="'/assets/HyundaiIonicHybrid_900.webp'"
+        [customClass]="'hun'"
+        price="8.00"
+      ></app-car-boobing-quote>
+    </section>
   </div>
+
+  <app-map-display [from]="from" [to]="to"></app-map-display>
 </section>
