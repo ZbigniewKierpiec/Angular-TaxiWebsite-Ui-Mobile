@@ -27,14 +27,19 @@ export interface PlaceResult {
 export class AutocompleteComponent {
   @ViewChild('pickUpField') pickUpField!: ElementRef;
   @Input() placeholder = 'Pickup';
+
   @Output() placeChanged = new EventEmitter<PlaceResult>();
   autocomplete: google.maps.places.Autocomplete | undefined;
+  @Output() focusStatusChange = new EventEmitter<boolean>();
+  @Output() typingStatusChange = new EventEmitter<boolean>();
+  isFocused: boolean = false;
+  hasStartedTyping: boolean = false;
  constructor(private ng:NgZone){}
   ngAfterViewInit() {
     this.autocomplete = new google.maps.places.Autocomplete(
       this.pickUpField.nativeElement,
       {
-        types: ['address'],
+        types: ['establishment','geocode'],
         componentRestrictions: { country: 'uk' },
       }
     );
@@ -52,7 +57,7 @@ export class AutocompleteComponent {
       this.ng.run(()=>{
         this.placeChanged.emit(result);
       })
-
+        
     });
   }
 
@@ -63,4 +68,29 @@ export class AutocompleteComponent {
       ? place.photos[0].getUrl({ maxWidth: 500 })
       : undefined;
   }
+
+
+ // Metoda uruchamiana przy fokusie
+ onFocus() {
+  this.isFocused = true;
+  this.focusStatusChange.emit(this.isFocused); // Emituje status do komponentu rodzica
+  console.log('Input uzyskał fokus');
+}
+
+// Metoda uruchamiana, gdy użytkownik zaczyna pisać lub przestaje pisać
+onInput(event: any) {
+  const inputValue = event.target.value;
+  if (inputValue.length > 0 && !this.hasStartedTyping) {
+    this.hasStartedTyping = true;
+    this.typingStatusChange.emit(this.hasStartedTyping); // Emituje status do rodzica
+    console.log('Użytkownik zaczął pisać!');
+  } else if (inputValue.length === 0 && this.hasStartedTyping) {
+    this.hasStartedTyping = false;
+    this.typingStatusChange.emit(this.hasStartedTyping); // Emituje status do rodzica
+    console.log('Użytkownik przestał pisać.');
+  }
+}
+
+
+
 }

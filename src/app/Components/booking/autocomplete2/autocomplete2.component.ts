@@ -36,7 +36,7 @@ export class Autocomplete2Component {
     this.autocomplete2 = new google.maps.places.Autocomplete(
       this.destinUpField.nativeElement,
       {
-        types: ['address'],
+        types: ['establishment','geocode'],
         componentRestrictions: { country: 'uk' },
       }
     );

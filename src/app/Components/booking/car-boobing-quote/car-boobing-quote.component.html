@@ -4,7 +4,7 @@
   </div>
   <div class="booking__wraper__resoult__car__right">
     <div class="booking__wraper__resoult__car__right__top">
-      <h1>1 x Saloon</h1>
+      <h1>1 x {{carType}}</h1>
     </div>
     <div class="booking__wraper__resoult__car__right__bottom">
       <div class="booking__wraper__resoult__car__right__bottom__spec">
@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="booking__wraper__resoult__car__right__bottom__book">
-        <button>
+        <button   (click)="onClick()"    >
           <data value="{{ price }}">£ {{ price }}</data>
           <span>book now</span>
         </button>

@@ -1,4 +1,4 @@
-<section class="booking">
+<section       class="booking">
   <div class="booking__image">
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
@@ -30,12 +30,6 @@
       </div>
       <div class="booking__quote__pickup">
         <app-autocomplete (placeChanged)="auto($event)"></app-autocomplete>
-        <!-- <input
-          #pickUpField
-          type="text"
-          [placeholder]="placeholder"
-          aria-label="Address"
-        /> -->
 
         <button (click)="viaFun()">via</button>
       </div>
@@ -183,19 +177,21 @@
       </div> -->
 
       <app-car-boobing-quote
+        (clicked)="handleCarClick($event)"
+        carType=" Executive"
         [active]="bookingQuote"
         [image]="'/assets/26-264798_new-2018-mercedes-benz-e-class-e-300.png'"
-        price="9.00"
+        [price]="totalCostMerce"
       ></app-car-boobing-quote>
       <br />
       <app-car-boobing-quote
+      carType="Saloon"
         [active]="bookingQuote"
         [image]="'/assets/HyundaiIonicHybrid_900.webp'"
         [customClass]="'hun'"
-        price="8.00"
+        [price]="totalCostIOniq"
       ></app-car-boobing-quote>
     </section>
   </div>
-
-  <app-map-display [from]="from" [to]="to"></app-map-display>
+  <!-- <app-map-display [from]="from" [to]="to"></app-map-display> -->
 </section>
