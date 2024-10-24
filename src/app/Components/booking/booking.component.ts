@@ -188,13 +188,32 @@ export class BookingComponent {
         this.distanceInMiles = distance / 1609.34; // Convert distance from meters to miles
         console.log('Distance (in miles):', this.distanceInMiles.toFixed(1));
 
+        // Check if the pickup distance exceeds 20 miles
+        if (this.distanceInMiles > 20) {
+          console.log('Distance exceeds 20 miles, please call the office.');
+          // You can add any other actions you want to take, like triggering a notification.
+          return; // If you want to stop further calculation when the distance exceeds 20 miles, use return.
+        }
+
         // Convert origen and destino to lowercase for uniform comparisons
         const origenLower = this.origen.toLowerCase();
         const destinoLower = this.destino.toLowerCase();
 
-        // Check for fixed prices based on origin or destination
+        // Check for "Heathrow" in either the origin or destination
         const isHeathrow =
           origenLower.includes('heathrow') || destinoLower.includes('heathrow');
+
+        // Check for "Hounslow" in either the origin or destination
+        const isHounslow =
+          origenLower.includes('hounslow') || destinoLower.includes('hounslow');
+
+        // Also check for specific Heathrow terminals
+        const isTerminal =
+          origenLower.includes('terminal') || destinoLower.includes('terminal');
+
+        // Treat Hounslow as part of Heathrow when specific terminal names are involved
+        const isHeathrowArea = isHeathrow || (isHounslow && isTerminal); // Assume Hounslow with "Terminal" refers to Heathrow
+
         const isGatwick =
           origenLower.includes('gatwick') || destinoLower.includes('gatwick');
         const isLuton =
@@ -204,28 +223,32 @@ export class BookingComponent {
         const isReading =
           origenLower.includes('reading') || destinoLower.includes('reading');
         const isWokingham =
-          origenLower.includes('wokingham') || destinoLower.includes('wokingham');
+          origenLower.includes('wokingham') ||
+          destinoLower.includes('wokingham');
         const isCrowthorne =
-          origenLower.includes('crowthorne') || destinoLower.includes('crowthorne');
+          origenLower.includes('crowthorne') ||
+          destinoLower.includes('crowthorne');
         const isSandhurst =
-          origenLower.includes('sandhurst') || destinoLower.includes('sandhurst');
+          origenLower.includes('sandhurst') ||
+          destinoLower.includes('sandhurst');
         const isBracknell =
-          origenLower.includes('bracknell') || destinoLower.includes('bracknell');
+          origenLower.includes('bracknell') ||
+          destinoLower.includes('bracknell');
 
         // Check for fixed prices between specific locations
-        if (isHeathrow && isCrowthorne) {
+        if (isHeathrowArea && isCrowthorne) {
           // Fixed cost for Crowthorne to Heathrow
           this.totalCostMerce = 60.0;
           this.totalCostIOniq = 60.0;
-        } else if (isHeathrow && isSandhurst) {
+        } else if (isHeathrowArea && isSandhurst) {
           // Fixed cost for Sandhurst to Heathrow
           this.totalCostMerce = 63.0;
           this.totalCostIOniq = 63.0;
-        } else if (isHeathrow && isWokingham) {
+        } else if (isHeathrowArea && isWokingham) {
           // Fixed cost for Wokingham to Heathrow
           this.totalCostMerce = 60.0;
           this.totalCostIOniq = 60.0;
-        } else if (isHeathrow && isBracknell) {
+        } else if (isHeathrowArea && isBracknell) {
           // Fixed cost for Bracknell to Heathrow
           this.totalCostMerce = 55.0;
           this.totalCostIOniq = 55.0;
@@ -237,6 +260,10 @@ export class BookingComponent {
           // Fixed cost for Sandhurst to Bracknell
           this.totalCostMerce = 19.0;
           this.totalCostIOniq = 19.0;
+        } else if (isHeathrowArea && isHounslow) {
+          // Fixed cost for Hounslow to Heathrow
+          this.totalCostMerce = 30.0; // Change this value as needed
+          this.totalCostIOniq = 30.0;
         } else if (isHeathrow) {
           // Fixed cost for Heathrow
           this.totalCostMerce = 55.0;
@@ -294,8 +321,6 @@ export class BookingComponent {
         console.error(error);
       });
   }
-
-
 
   // Function to round costs according to specified rules
   roundCost(cost: any) {
@@ -384,17 +409,17 @@ export class BookingComponent {
       console.error('Pickup or destination is missing!');
       return;
     }
- // Add pickup and destination to the details object
- const updatedDetails = {
-  ...details,
-  pickup: pickup,
-  destination: destination,
-  active: true
-};
+    // Add pickup and destination to the details object
+    const updatedDetails = {
+      ...details,
+      pickup: pickup,
+      destination: destination,
+      active: true,
+    };
 
- // Update car details with the new object
- this.active = true;
- this.carS.updateCarDetails(updatedDetails);
+    // Update car details with the new object
+    this.active = true;
+    this.carS.updateCarDetails(updatedDetails);
 
     // Logic to handle the click event
     console.log('Car executive was clicked!');
