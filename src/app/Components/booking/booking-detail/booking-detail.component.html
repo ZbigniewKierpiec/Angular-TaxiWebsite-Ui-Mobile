@@ -1,3 +1,33 @@
-<div class="box">
-  <h1>Booking Details</h1>
-</div>
+<section [class.active]="active" class="booking">
+  <div class="booking__detail">
+    <div class="booking__detail__tittle">passenger details</div>
+    <div class="booking__detail__quote">
+      <div class="booking__detail__quote__left">
+        <div class="booking__detail__quote__left__label">
+          <p>pickup:</p>
+          <p>via</p>
+          <p>drop off:</p>
+          <p>date & time:</p>
+          <p>return journey:</p>
+          <p>date & time:</p>
+          <p>passengers:</p>
+        </div>
+        <div class="booking__detail__quote__left__details">
+          <p>{{pickup}}</p>
+          <p></p>
+          <p>{{destination}}</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+      <div class="booking__detail__quote__right">
+       <app-car-detail-price></app-car-detail-price>
+       <div class="booking__detail__quote__right__edit">edit journey</div>
+      </div>
+    </div>
+    <div class="booking__detail__info"></div>
+    <div class="booking__detail__payments"></div>
+  </div>
+</section>

@@ -27,11 +27,7 @@ export const routes: Routes = [
   {
     path: 'bracknellTaxis/booking',
     component: BookingComponent,
-    data: { animate: false },
+ 
   },
-  {
-    path: 'bracknellTaxis/booking/detail',
-    component: BookingDetailComponent,
-    data: { animate: true },
-  },
+
 ];

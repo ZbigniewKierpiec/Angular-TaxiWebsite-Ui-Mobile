@@ -1,8 +1,8 @@
-<section       class="booking">
+<section class="booking">
   <div class="booking__image">
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
-  <div class="booking__wraper">
+  <div [class.active]="active" class="booking__wraper">
     <div
       [classList]="
         bookingQuote
@@ -185,7 +185,8 @@
       ></app-car-boobing-quote>
       <br />
       <app-car-boobing-quote
-      carType="Saloon"
+        (clicked)="handleCarClick($event)"
+        carType="Saloon"
         [active]="bookingQuote"
         [image]="'/assets/HyundaiIonicHybrid_900.webp'"
         [customClass]="'hun'"
@@ -194,4 +195,5 @@
     </section>
   </div>
   <!-- <app-map-display [from]="from" [to]="to"></app-map-display> -->
+  <app-booking-detail [active]="active"></app-booking-detail>
 </section>

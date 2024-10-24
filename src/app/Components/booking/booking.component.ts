@@ -23,7 +23,8 @@ import { MapDisplayComponent } from './map-display/map-display.component';
 import { Autocomplete2Component } from './autocomplete2/autocomplete2.component';
 import { DistanceServiceService } from '../../Services/distance-service.service';
 import { Router, RouterModule } from '@angular/router';
-
+import { BookingDetailComponent } from './booking-detail/booking-detail.component';
+import { CarService } from '../../Services/car.service';
 
 export interface PlaceResult {
   address: string;
@@ -37,7 +38,6 @@ export interface PlaceResult {
   selector: 'app-booking',
   standalone: true,
   imports: [
-
     CommonModule,
     CarBoobingQuoteComponent,
     HttpClientModule,
@@ -48,12 +48,10 @@ export interface PlaceResult {
     MapDisplayComponent,
     Autocomplete2Component,
     RouterModule,
-
+    BookingDetailComponent,
   ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss',
-
-
 })
 export class BookingComponent {
   // @ViewChild('pickUpField') pickUpField!: ElementRef;
@@ -79,7 +77,11 @@ export class BookingComponent {
   totalCostIOniq: any = 0;
   formattedCost: string = '';
   isFocused: boolean = false;
-  constructor(private distanceService: DistanceServiceService , private router: Router) {}
+  constructor(
+    private distanceService: DistanceServiceService,
+    private router: Router,
+    private carS: CarService
+  ) {}
   /////////////////////////////////////////
 
   importantPlaces = [
@@ -162,7 +164,7 @@ export class BookingComponent {
       price: 'Varies by journey',
     },
     { name: 'Bracknell', type: 'Town', price: 'Free' },
-    { name: 'Reading', type: 'Town', price: 'Free' },
+    { name: 'Reading', type: 'Town', price: '28.00' },
     { name: 'Windsor', type: 'Town', price: 'Free' },
     { name: 'Maidenhead', type: 'Town', price: 'Free' },
     { name: 'Ascot', type: 'Town', price: 'Free' },
@@ -179,7 +181,6 @@ export class BookingComponent {
     { name: 'Langley', type: 'Town', price: 'Free' },
   ];
 
-
   calculateDistance() {
     this.distanceService
       .getDistancia(this.origen, this.destino)
@@ -187,21 +188,56 @@ export class BookingComponent {
         this.distanceInMiles = distance / 1609.34; // Convert distance from meters to miles
         console.log('Distance (in miles):', this.distanceInMiles.toFixed(1));
 
-        // Check for fixed prices based on origin or destination
-        const isHeathrow = (this.origen.toLowerCase().includes('heathrow') ||
-                            this.destino.toLowerCase().includes('heathrow'));
-        const isGatwick = (this.origen.toLowerCase().includes('gatwick') ||
-                           this.destino.toLowerCase().includes('gatwick'));
-        const isLuton = (this.origen.toLowerCase().includes('luton') ||
-                         this.destino.toLowerCase().includes('luton'));
-        const isStansted = (this.origen.toLowerCase().includes('stansted') ||
-                            this.destino.toLowerCase().includes('stansted'));
-        const isReading = (this.origen.toLowerCase().includes('reading') ||
-                           this.destino.toLowerCase().includes('reading'));
-        const isWokingham = (this.origen.toLowerCase().includes('wokingham') ||
-                             this.destino.toLowerCase().includes('wokingham'));
+        // Convert origen and destino to lowercase for uniform comparisons
+        const origenLower = this.origen.toLowerCase();
+        const destinoLower = this.destino.toLowerCase();
 
-        if (isHeathrow) {
+        // Check for fixed prices based on origin or destination
+        const isHeathrow =
+          origenLower.includes('heathrow') || destinoLower.includes('heathrow');
+        const isGatwick =
+          origenLower.includes('gatwick') || destinoLower.includes('gatwick');
+        const isLuton =
+          origenLower.includes('luton') || destinoLower.includes('luton');
+        const isStansted =
+          origenLower.includes('stansted') || destinoLower.includes('stansted');
+        const isReading =
+          origenLower.includes('reading') || destinoLower.includes('reading');
+        const isWokingham =
+          origenLower.includes('wokingham') || destinoLower.includes('wokingham');
+        const isCrowthorne =
+          origenLower.includes('crowthorne') || destinoLower.includes('crowthorne');
+        const isSandhurst =
+          origenLower.includes('sandhurst') || destinoLower.includes('sandhurst');
+        const isBracknell =
+          origenLower.includes('bracknell') || destinoLower.includes('bracknell');
+
+        // Check for fixed prices between specific locations
+        if (isHeathrow && isCrowthorne) {
+          // Fixed cost for Crowthorne to Heathrow
+          this.totalCostMerce = 60.0;
+          this.totalCostIOniq = 60.0;
+        } else if (isHeathrow && isSandhurst) {
+          // Fixed cost for Sandhurst to Heathrow
+          this.totalCostMerce = 63.0;
+          this.totalCostIOniq = 63.0;
+        } else if (isHeathrow && isWokingham) {
+          // Fixed cost for Wokingham to Heathrow
+          this.totalCostMerce = 60.0;
+          this.totalCostIOniq = 60.0;
+        } else if (isHeathrow && isBracknell) {
+          // Fixed cost for Bracknell to Heathrow
+          this.totalCostMerce = 55.0;
+          this.totalCostIOniq = 55.0;
+        } else if (isBracknell && isCrowthorne) {
+          // Fixed cost for Crowthorne to Bracknell
+          this.totalCostMerce = 15.0;
+          this.totalCostIOniq = 15.0;
+        } else if (isBracknell && isSandhurst) {
+          // Fixed cost for Sandhurst to Bracknell
+          this.totalCostMerce = 19.0;
+          this.totalCostIOniq = 19.0;
+        } else if (isHeathrow) {
           // Fixed cost for Heathrow
           this.totalCostMerce = 55.0;
           this.totalCostIOniq = 55.0;
@@ -237,7 +273,7 @@ export class BookingComponent {
         }
 
         // Apply a 10% discount to totalCostIOniq
-        const discount = this.totalCostIOniq * 0.10;
+        const discount = this.totalCostIOniq * 0.1;
         this.totalCostIOniq -= discount;
 
         // Rounding logic
@@ -249,15 +285,20 @@ export class BookingComponent {
         this.totalCostIOniq = this.totalCostIOniq.toFixed(2);
 
         console.log('Total cost for Merce: £', this.totalCostMerce);
-        console.log('Total cost for IOniq after 10% discount: £', this.totalCostIOniq);
+        console.log(
+          'Total cost for IOniq after 10% discount: £',
+          this.totalCostIOniq
+        );
       })
       .catch((error) => {
         console.error(error);
       });
   }
 
+
+
   // Function to round costs according to specified rules
-  roundCost(cost:any) {
+  roundCost(cost: any) {
     const roundedCost = Math.round(cost * 10) / 10; // Round to one decimal place
 
     if (roundedCost % 1 >= 0.51) {
@@ -317,31 +358,48 @@ export class BookingComponent {
     console.log('Typing status in child:', isTyping);
   }
 
-///////////////////////////////////////////////
+  ///////////////////////////////////////////////
+  active: boolean = false;
 
-handleCarClick(details: { carType: string; active: boolean; image: string; price: string }) {
-  // Logic to handle the click event
-  console.log('Car executive was clicked!');
-  console.log(details)
-  this.router.navigate(['bracknellTaxis/booking/detail'], {
-    queryParams: {
-      carType: details.carType,
-      active: details.active,
-      image: details.image,
-      price: details.price
+  // carDetails = {
+  //   pickup:'',
+  //   destination:'',
+  //   carType: 'SUV',
+  //   active: false,
+  //   image: 'url/to/image.jpg',
+  //   price: '$30,000',
+  // };
+
+  handleCarClick(details: {
+    carType: string;
+    active: boolean;
+    image: string;
+    price: string;
+  }) {
+    // Ensure 'from' and 'to' locations are set properly before proceeding
+    const pickup = this.origen; // Using 'origen' from auto() method
+    const destination = this.destino; // Using 'destino' from auto2() method
+
+    if (!pickup || !destination) {
+      console.error('Pickup or destination is missing!');
+      return;
     }
+ // Add pickup and destination to the details object
+ const updatedDetails = {
+  ...details,
+  pickup: pickup,
+  destination: destination,
+  active: true
+};
 
+ // Update car details with the new object
+ this.active = true;
+ this.carS.updateCarDetails(updatedDetails);
 
-
-
-
-  });
-
+    // Logic to handle the click event
+    console.log('Car executive was clicked!');
+    console.log(details);
+    // this.active = true;
+    // this.carS.updateCarDetails({ ...details, active: true });
+  }
 }
-
-
-}
-
-
-
-
