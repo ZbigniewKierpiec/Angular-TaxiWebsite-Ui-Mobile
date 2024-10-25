@@ -32,6 +32,7 @@ import { BookingDetailComponent } from './booking-detail/booking-detail.componen
 import { CarService } from '../../Services/car.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import ValidateForm from '../../helpers/validateForm';
+import { NotificationComponent } from '../notification/notification.component';
 export interface PlaceResult {
   address: string;
   location?: google.maps.LatLng;
@@ -56,6 +57,7 @@ export interface PlaceResult {
     RouterModule,
     BookingDetailComponent,
     ReactiveFormsModule,
+    NotificationComponent,
   ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss',
@@ -85,6 +87,7 @@ export class BookingComponent {
   formattedCost: string = '';
   isFocused: boolean = false;
   quoteForm!: FormGroup;
+  isPastDate: boolean = false;
   constructor(
     private distanceService: DistanceServiceService,
     private router: Router,
@@ -96,10 +99,9 @@ export class BookingComponent {
       data: ['', Validators.required],
       passengers: ['', Validators.required],
       luggages: ['', Validators.required],
-      origin: ['', Validators.required],     // Required field for origin
+      origin: ['', Validators.required], // Required field for origin
       destination: ['', Validators.required], // Required field for destination
       greet: [''],
-
     });
   }
   /////////////////////////////////////////
@@ -380,20 +382,41 @@ export class BookingComponent {
     this.via = false;
   }
 
+  @ViewChild(NotificationComponent) childComponent!: NotificationComponent; // Reference to child
+
+  triggerNotificationFromParent(message: string) {
+    this.childComponent.addNotification(message); // Calls addNotification() in child
+  }
+
   getQuote(): void {
-    // if (this.quoteForm) {
-    //   console.log(this.quoteForm.value);
-    // }
     if (this.quoteForm && this.quoteForm.valid) {
       console.log(this.quoteForm.value);
+      const pickupDate = this.quoteForm.get('data')?.value;
 
+      // Check if the selected pickup date is in the past
+      const now = new Date();
+      const selectedDate = new Date(pickupDate);
 
+      if (selectedDate < now) {
+        console.error('The selected pickup date cannot be in the past.');
+
+        this.triggerNotificationFromParent(
+          'Please select a future date. Past dates are not allowed.'
+        );
+        this.isPastDate = true;
+        return; // Stop further execution if the date is in the past
+      }
+      this.isPastDate = false;
       this.bookingQuote = true;
       this.calculateDistance();
+
       // Additional logic for valid form submission can be added here
     } else {
       // Handle invalid form case
       console.error('Form is invalid:', this.quoteForm?.errors);
+      this.triggerNotificationFromParent(
+        'Quote submission failed: Please ensure all required fields are completed and that the information provided is in the correct format. Fields in red indicate missing or incorrect information. '
+      );
       ValidateForm.validateAllFormFileds(this.quoteForm);
       // Optionally, show an error message to the user
     }
@@ -403,11 +426,9 @@ export class BookingComponent {
     console.log(item);
     this.from = item;
     this.origen = item.address;
-     // Update the form control for origin
+    // Update the form control for origin
 
-
-     this.quoteForm.patchValue({ origin: item.address });
-
+    this.quoteForm.patchValue({ origin: item.address });
   }
 
   auto2(item: PlaceResult) {

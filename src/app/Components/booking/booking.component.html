@@ -1,4 +1,5 @@
 <section class="booking">
+  <app-notification></app-notification>
   <div class="booking__image">
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
@@ -87,9 +88,13 @@
               quoteForm.controls['data'].dirty &&
               quoteForm.hasError('required', 'data')
             "
-            class="text-danger"
-            >*data and time is required</small
-          >
+            class="text-danger">*data and time is required</small>
+
+            <small *ngIf="isPastDate" style="color: red;">
+              The selected date cannot be in the past.
+            </small>
+
+
         </div>
 
         <ng-container *ngIf="trip === 'return'">
@@ -106,6 +111,10 @@
               name=""
               id="datetime-input"
             />
+
+
+
+
           </div>
         </ng-container>
 
