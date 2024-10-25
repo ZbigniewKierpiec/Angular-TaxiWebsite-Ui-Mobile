@@ -26,6 +26,12 @@ export class BookingDetailComponent {
   @Input() active: boolean = false;
   pickup?: string = '';
   destination?: string = '';
+  via?:string='';
+  data?:string='';
+  passengers?:string='';
+  luggages?:string='';
+  greet?:boolean=false;
+
   signUpForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   constructor(private fb: FormBuilder, private carS: CarService) {}
@@ -37,6 +43,12 @@ export class BookingDetailComponent {
       console.log(details);
       this.destination = details?.destination;
       this.pickup = details?.pickup;
+      this.via = details?.via;
+      this.data=details?.data;
+      this.passengers = details?.passengers;
+      this.luggages = details?.luggages;
+      this.greet= details?.greet;
+
     });
   }
 

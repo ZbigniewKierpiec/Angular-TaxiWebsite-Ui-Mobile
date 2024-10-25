@@ -8,23 +8,25 @@
           <p>via</p>
           <p>drop off:</p>
           <p>date & time:</p>
-          <p>return journey:</p>
-          <p>date & time:</p>
+
           <p>passengers:</p>
+          <p>louggages</p>
+          <p>greet:</p>
         </div>
         <div class="booking__detail__quote__left__details">
-          <p>{{pickup}}</p>
-          <p></p>
-          <p>{{destination}}</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>{{ pickup }}</p>
+          <p>{{ via }}</p>
+          <p>{{ destination }}</p>
+          <p>{{ data | date : "fullDate" }} {{ data | date : "shortTime" }}</p>
+
+          <p>{{ passengers }}</p>
+          <p>{{ luggages }}</p>
+          <p [textContent]="greet?'Yes':'no'" ></p>
         </div>
       </div>
       <div class="booking__detail__quote__right">
-       <app-car-detail-price></app-car-detail-price>
-       <div class="booking__detail__quote__right__edit">edit journey</div>
+        <app-car-detail-price></app-car-detail-price>
+        <div class="booking__detail__quote__right__edit">edit journey</div>
       </div>
     </div>
     <div class="booking__detail__info"></div>

@@ -14,7 +14,12 @@ import {
 } from '@angular/core';
 import { CarBoobingQuoteComponent } from './car-boobing-quote/car-boobing-quote.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  Validators,
+} from '@angular/forms';
 import { map } from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -25,7 +30,8 @@ import { DistanceServiceService } from '../../Services/distance-service.service'
 import { Router, RouterModule } from '@angular/router';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { CarService } from '../../Services/car.service';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import ValidateForm from '../../helpers/validateForm';
 export interface PlaceResult {
   address: string;
   location?: google.maps.LatLng;
@@ -49,6 +55,7 @@ export interface PlaceResult {
     Autocomplete2Component,
     RouterModule,
     BookingDetailComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss',
@@ -77,12 +84,27 @@ export class BookingComponent {
   totalCostIOniq: any = 0;
   formattedCost: string = '';
   isFocused: boolean = false;
+  quoteForm!: FormGroup;
   constructor(
     private distanceService: DistanceServiceService,
     private router: Router,
-    private carS: CarService
-  ) {}
+    private carS: CarService,
+    private fb: FormBuilder
+  ) {
+    this.quoteForm = this.fb.group({
+      via: [''],
+      data: ['', Validators.required],
+      passengers: ['', Validators.required],
+      luggages: ['', Validators.required],
+      origin: ['', Validators.required],     // Required field for origin
+      destination: ['', Validators.required], // Required field for destination
+      greet: [''],
+
+    });
+  }
   /////////////////////////////////////////
+
+  ///////////////////////////////////////////////
 
   importantPlaces = [
     {
@@ -189,11 +211,11 @@ export class BookingComponent {
         console.log('Distance (in miles):', this.distanceInMiles.toFixed(1));
 
         // Check if the pickup distance exceeds 20 miles
-        if (this.distanceInMiles > 20) {
-          console.log('Distance exceeds 20 miles, please call the office.');
-          // You can add any other actions you want to take, like triggering a notification.
-          return; // If you want to stop further calculation when the distance exceeds 20 miles, use return.
-        }
+        // if (this.distanceInMiles > 20) {
+        //   console.log('Distance exceeds 20 miles, please call the office.');
+        //   // You can add any other actions you want to take, like triggering a notification.
+        //   return; // If you want to stop further calculation when the distance exceeds 20 miles, use return.
+        // }
 
         // Convert origen and destino to lowercase for uniform comparisons
         const origenLower = this.origen.toLowerCase();
@@ -299,6 +321,12 @@ export class BookingComponent {
           }
         }
 
+        // Apply the additional £15.00 if greet is true
+        if (this.quoteForm.value.greet) {
+          this.totalCostMerce += 15.0; // Add £15.00 to totalCostMerce
+          this.totalCostIOniq += 15.0; // Add £15.00 to totalCostIOniq
+        }
+
         // Apply a 10% discount to totalCostIOniq
         const discount = this.totalCostIOniq * 0.1;
         this.totalCostIOniq -= discount;
@@ -353,20 +381,40 @@ export class BookingComponent {
   }
 
   getQuote(): void {
-    this.bookingQuote = true;
-    this.calculateDistance();
+    // if (this.quoteForm) {
+    //   console.log(this.quoteForm.value);
+    // }
+    if (this.quoteForm && this.quoteForm.valid) {
+      console.log(this.quoteForm.value);
+
+
+      this.bookingQuote = true;
+      this.calculateDistance();
+      // Additional logic for valid form submission can be added here
+    } else {
+      // Handle invalid form case
+      console.error('Form is invalid:', this.quoteForm?.errors);
+      ValidateForm.validateAllFormFileds(this.quoteForm);
+      // Optionally, show an error message to the user
+    }
   }
 
   auto(item: PlaceResult) {
     console.log(item);
     this.from = item;
     this.origen = item.address;
+     // Update the form control for origin
+
+
+     this.quoteForm.patchValue({ origin: item.address });
+
   }
 
   auto2(item: PlaceResult) {
     console.log(item.address);
     this.to = item;
     this.destino = item.address;
+    this.quoteForm.patchValue({ destination: item.address });
   }
 
   ///////////////////////////////////////////////////////////////////
@@ -409,12 +457,17 @@ export class BookingComponent {
       console.error('Pickup or destination is missing!');
       return;
     }
+
+    // Prepare quoteForm values if available
+    const quoteFormValues = this.quoteForm ? this.quoteForm.value : {};
+
     // Add pickup and destination to the details object
     const updatedDetails = {
       ...details,
       pickup: pickup,
       destination: destination,
       active: true,
+      ...quoteFormValues,
     };
 
     // Update car details with the new object
