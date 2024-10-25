@@ -88,6 +88,8 @@ export class BookingComponent {
   isFocused: boolean = false;
   quoteForm!: FormGroup;
   isPastDate: boolean = false;
+  datetimeValue: string | null = null;
+  showLabel = false;
   constructor(
     private distanceService: DistanceServiceService,
     private router: Router,

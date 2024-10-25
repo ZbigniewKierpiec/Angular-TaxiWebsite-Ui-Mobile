@@ -81,6 +81,7 @@
   align-items: center;
   small {
     position: absolute;
+
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -97,11 +98,12 @@
   @include respond(tab-port) {
     padding: 2rem 0;
     justify-content: flex-start;
+
     min-height: 30vh;
     height: max-content;
-    // min-height: 100vh;
 
     // background-color: skyblue;
+    background-color: #F0F0F0;
     flex-direction: column;
   }
 
@@ -129,8 +131,22 @@
     justify-content: space-evenly;
 
     transition: transform 0.3s linear;
+    @include respond(tab-port) {
+      // align-items: flex-start;
+
+    }
+    form {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      order: 2;
+    }
+
     &.active {
       transform: translateX(-100%);
+      order: -1;
     }
     @include respond(tab-port) {
       height: auto;
@@ -153,6 +169,7 @@
       opacity: 0;
       @include respond(tab-port) {
         width: 85%;
+        order: 1;
       }
       &.active {
         display: block;
@@ -405,18 +422,36 @@
       position: relative;
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       grid-template-rows: 1fr;
-
+      justify-content: flex-start;
+      grid-gap: 1rem;
       input {
+         width: 100% !important;
+         min-width: 100% !important;
+
         border: none;
         outline: none;
         background-color: #8eb98f;
-        padding: 0 1rem;
+
         &#datetime-input {
+
           font-size: 1.3rem;
           color: black;
           font-weight: bolder;
+        }
+      }
+
+      label{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left:2rem;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        display: none;
+        @include respond(tab-port) {
+            display: block;
         }
       }
     }

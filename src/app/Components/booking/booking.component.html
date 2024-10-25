@@ -82,7 +82,16 @@
             type="datetime-local"
             name=""
             id="datetime-input"
+
+            [(ngModel)]="datetimeValue"
+            (focus)="showLabel = true"
+            (blur)="showLabel = !!datetimeValue"
+
+
           />
+          <label *ngIf="!datetimeValue" for="datetime">Select Date and Time</label>
+
+
           <small
             *ngIf="
               quoteForm.controls['data'].dirty &&
@@ -105,11 +114,16 @@
             }"
             class="booking__quote__return"
           >
+
+
             <input
               placeholder="Pickup"
               type="datetime-local"
               name=""
               id="datetime-input"
+
+
+
             />
 
 
@@ -125,6 +139,7 @@
               name="passengers"
               id="passengers"
             >
+              <option value="" disabled selected>Passengers</option>
               <option value="1">Passengers 1</option>
               <option value="2">Passengers 2</option>
               <option value="3">Passengers 3</option>
@@ -142,6 +157,8 @@
           </div>
           <div class="booking__quote__passengers__select-wrapper">
             <select formControlName="luggages" name="luggages" id="luggages">
+              <option value="" disabled selected>Luggages</option>
+              <option value="0">Luggages 0</option>
               <option value="1">Luggages 1</option>
               <option value="2">Luggages 2</option>
               <option value="3">Luggages 3</option>
