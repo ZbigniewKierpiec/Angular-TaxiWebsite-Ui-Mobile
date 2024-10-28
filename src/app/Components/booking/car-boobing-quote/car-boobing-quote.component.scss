@@ -71,6 +71,7 @@
 
 .booking {
   --active: #28a745;
+
   height: 100vh;
   height: 70vh;
   background-color: #8eb98f;
@@ -78,7 +79,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+   background-color: yellow !important;
   button,
   input {
     border-radius: 0.5rem;
@@ -139,6 +140,7 @@
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: 3rem 1fr;
+
           &__top {
             display: flex;
             justify-content: center;

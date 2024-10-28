@@ -185,9 +185,13 @@
     top: 0;
     width: 100%;
     z-index: 1000; /* Ensure it stays on top */
+    @include respond(tab-port) {
+      position:static;
+      top:0;
+    }
   }
   @include respond(tab-port) {
-    position: relative;
+    position:relative;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -389,7 +389,7 @@ export class BookingComponent {
   triggerNotificationFromParent(message: string) {
     this.childComponent.addNotification(message); // Calls addNotification() in child
   }
-
+  isActiveMap:boolean=false;
   getQuote(): void {
     if (this.quoteForm && this.quoteForm.valid) {
       console.log(this.quoteForm.value);
@@ -422,6 +422,10 @@ export class BookingComponent {
       ValidateForm.validateAllFormFileds(this.quoteForm);
       // Optionally, show an error message to the user
     }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.isActiveMap=true;
+   
   }
 
   auto(item: PlaceResult) {

@@ -4,7 +4,7 @@
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
   <div [class.active]="active" class="booking__wraper">
-    <form [formGroup]="quoteForm">
+    <form            [formGroup]="quoteForm">
       <div
         [classList]="
           bookingQuote
@@ -192,72 +192,8 @@
         </div>
       </div>
     </form>
-
+    <app-map-display [from]="from" [to]="to"   [isActiveMap]="isActiveMap"        ></app-map-display>
     <section [class.active]="bookingQuote" class="booking__wraper__resoult">
-      <!-- <div class="booking__wraper__resoult__car">
-
-        <div class="booking__wraper__resoult__car__left">
-          <img
-            src="/assets/26-264798_new-2018-mercedes-benz-e-class-e-300.png"
-            alt=""
-          />
-        </div>
-        <div class="booking__wraper__resoult__car__right">
-          <div class="booking__wraper__resoult__car__right__top">
-            <h1>1 x Saloon</h1>
-          </div>
-          <div class="booking__wraper__resoult__car__right__bottom">
-            <div
-              class="booking__wraper__resoult__car__right__bottom__spec"
-            >
-
-            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
-                <h1>4</h1>
-              </div>
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
-                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
-                  <i class="fa-solid fa-person"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
-                <h1>4</h1>
-              </div>
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
-                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
-                  <i class="fa-solid fa-suitcase"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="booking__wraper__resoult__car__right__bottom__spec__box">
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__top">
-                <h1>2</h1>
-              </div>
-              <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom">
-                <div class="booking__wraper__resoult__car__right__bottom__spec__box__bottom__person">
-                  <i class="fa-solid fa-briefcase"></i>
-                </div>
-              </div>
-            </div>
-
-          </div>
-            <div
-              class="booking__wraper__resoult__car__right__bottom__book"
-            >
-            <button>
-              <data value="9.00">£9.00</data>
-              <span>book now</span>
-            </button>
-
-
-          </div>
-          </div>
-        </div>
-      </div> -->
 
       <app-car-boobing-quote
         (clicked)="handleCarClick($event)"
@@ -275,8 +211,14 @@
         [customClass]="'hun'"
         [price]="totalCostIOniq"
       ></app-car-boobing-quote>
+
+
+
     </section>
+
+
+
   </div>
-  <!-- <app-map-display [from]="from" [to]="to"></app-map-display> -->
-  <app-booking-detail [active]="active"></app-booking-detail>
+
+  <!-- <app-booking-detail [active]="active"></app-booking-detail> -->
 </section>

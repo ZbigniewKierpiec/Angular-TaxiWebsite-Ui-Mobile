@@ -103,7 +103,7 @@
     height: max-content;
 
     // background-color: skyblue;
-    background-color: #F0F0F0;
+    // background-color: #f0f0f0;
     flex-direction: column;
   }
 
@@ -125,19 +125,32 @@
     }
   }
   &__wraper {
+    width: 70%;
+    width: 85%;
+    // width: min-content;
+    max-width: max-content;
     width: 100%;
-    // width: fit-content;
-    display: flex;
-    justify-content: space-evenly;
+
+    //     display: flex;
+    // justify-content: center;
+
+    // c
+    // justify-content: space-between;
 
     transition: transform 0.3s linear;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+ justify-items: space-around;
+
+    grid-gap: 3rem;
+    margin: 0 auto;
+ 
     @include respond(tab-port) {
       // align-items: flex-start;
-
+      width: 100%;
     }
     form {
-      width: 100%;
-      height: 100%;
       display: grid;
       grid-template-columns: 1fr;
       justify-items: center;
@@ -145,6 +158,7 @@
     }
 
     &.active {
+      width: 100%;
       transform: translateX(-100%);
       order: -1;
     }
@@ -155,21 +169,21 @@
       grid-template-rows: 1fr;
       justify-items: center;
       align-items: center;
+
       grid-row-gap: 2rem;
     }
     &__resoult {
       width: 30%;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 10rem 10rem;
-      grid-row-gap: 2rem;
+
       background-color: transparent;
       transition: all 0.2s linear;
+
+      order: 2;
       display: none;
       opacity: 0;
       @include respond(tab-port) {
         width: 85%;
-        order: 1;
+        order: -2;
       }
       &.active {
         display: block;
@@ -180,6 +194,7 @@
         background-color: black;
         display: grid;
         grid-template-columns: 12rem 1fr;
+        grid-template-rows: 1fr;
         background-color: white;
         &__left {
           display: flex;
@@ -422,36 +437,35 @@
       position: relative;
       padding: 0 1rem;
       display: grid;
-      grid-template-columns:1fr;
+      grid-template-columns: 1fr;
       grid-template-rows: 1fr;
       justify-content: flex-start;
       grid-gap: 1rem;
       input {
-         width: 100% !important;
-         min-width: 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
 
         border: none;
         outline: none;
         background-color: #8eb98f;
 
         &#datetime-input {
-
           font-size: 1.3rem;
           color: black;
           font-weight: bolder;
         }
       }
 
-      label{
+      label {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left:2rem;
+        left: 2rem;
         font-size: 1.3rem;
         font-weight: bolder;
         display: none;
         @include respond(tab-port) {
-            display: block;
+          display: block;
         }
       }
     }
