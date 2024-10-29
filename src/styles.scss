@@ -23,3 +23,26 @@ input[type="datetime-local"] {
   width: 100%;
   box-sizing: border-box; /* Ensures padding doesn't exceed 100% width */
 }
+
+
+input{
+  border: none;
+  outline: none;
+:active{
+  border: none;
+}
+:focus{
+  border: none;
+}
+}
+
+
+textarea{
+  border: none;
+  outline: none;
+  background-color: rgb(60, 57, 57);
+  color: white;
+  &::placeholder{
+    color: rgba(255, 255, 255, 0.487);
+  }
+}

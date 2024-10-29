@@ -411,7 +411,7 @@ export class BookingComponent {
       this.isPastDate = false;
       this.bookingQuote = true;
       this.calculateDistance();
-
+      this.isActiveMap=true;
       // Additional logic for valid form submission can be added here
     } else {
       // Handle invalid form case
@@ -424,8 +424,8 @@ export class BookingComponent {
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.isActiveMap=true;
-   
+
+
   }
 
   auto(item: PlaceResult) {

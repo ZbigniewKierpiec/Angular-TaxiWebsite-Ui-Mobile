@@ -85,6 +85,7 @@
   align-items: center;
   transition: left 0.3s linear; /* Use left for horizontal movement */
   border-radius: 0.5rem;
+  z-index: 9999999999999999999999999;
   @include respond(tab-port) {
     // transform: translate(100%, 0%);
     width: 100vw;
@@ -189,6 +190,83 @@
       }
     }
     &__info {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows:5rem 5rem 7rem;
+      grid-gap: 1rem;
+      margin-top: 1rem;
+      &__name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        input{
+          flex-grow: 1;
+          height: 80%;
+          padding: 0 1rem;
+          font-size: 1.7rem;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: .5rem;
+          &::placeholder{
+            color: rgba(255, 255, 255, 0.487);
+
+          }
+        }
+      }
+      &__mobile{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        grid-gap: 1rem;
+        input{
+          flex-grow: 1;
+          height: 80%;
+          padding: 0 1rem;
+          font-size: 1.7rem;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: .5rem;
+          &::placeholder{
+            color: rgba(255, 255, 255, 0.487);
+
+          }
+        }
+
+
+      }
+      &__instruction{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        textarea{
+
+          flex-grow: 1;
+          padding: 0 1rem;
+          padding-top: .7rem;
+          font-size: 1.7rem;
+          height: 80%;
+          resize: none;
+          overflow-y: auto;    /* Enables vertical scrolling */
+          overflow-x: hidden;  /* Prevents horizontal scroll */
+          border: none;
+          outline: none;
+          background-color: rgb(60, 57, 57);
+          color: white;
+          border-radius: .5rem;
+          &::placeholder{
+            color: rgba(255, 255, 255, 0.487);
+
+          }
+
+
+        }
+      }
     }
 
     &__payments {
