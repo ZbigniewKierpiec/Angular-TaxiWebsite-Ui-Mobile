@@ -11,10 +11,12 @@
       />
     </div>
     <div data-aos="zoom-in" data-aos-easing="ease" class="cars__mercedes__text">
-      <h1>{{ "Cars_a-1" | translate }}</h1>
-      <h2>
+      <!-- <h1 [innerHTML]="'Cars_a-1' | translate">{{ "Cars_a-1" | translate }}</h1>
+      <h2 [innerHTML]="'Cars_a-2' | translate"       >
         {{ "Cars_a-2" | translate }}
-      </h2>
+      </h2> -->
+      <h1 [innerHTML]="'Cars_a-1' | translate"></h1>
+      <h2 [innerHTML]="'Cars_a-2' | translate"></h2>
     </div>
   </article>
   <div class="line"></div>
@@ -23,8 +25,11 @@
       <img src="/assets/HyundaiIonicHybrid_900.webp" alt="" />
     </div>
     <div data-aos="fade-up" data-aos-easing="ease" class="cars__hyundai__text">
-      <h1>{{ "Cars_b-1" | translate }}</h1>
-      <h2>{{ "Cars_b-2" | translate }}</h2>
+      <!-- <h1>{{ "Cars_b-1" | translate }}</h1>
+      <h2>{{ "Cars_b-2" | translate }}</h2> -->
+
+      <h1 [innerHTML]="'Cars_b-1' | translate"></h1>
+      <h2 [innerHTML]="'Cars_b-2' | translate"></h2>
     </div>
   </article>
   <div class="line"></div>
@@ -33,8 +38,11 @@
       <img src="/assets/vito.png" alt="" />
     </div>
     <div data-aos="zoom-in" data-aos-easing="ease" class="cars__vito__text">
-      <h1>{{ "Cars_c-1" | translate }}</h1>
-      <h2>{{ "Cars_c-2" | translate }}</h2>
+      <!-- <h1>{{ "Cars_c-1" | translate }}</h1>
+      <h2>{{ "Cars_c-2" | translate }}</h2> -->
+
+      <h1 [innerHTML]="'Cars_c-1' | translate"></h1>
+      <h2 [innerHTML]="'Cars_c-2' | translate"></h2>
     </div>
   </article>
 </section>
