@@ -1,0 +1,62 @@
+<div [class.active]="active" class="box">
+  <div class="box__title">
+    <h1>passenger details</h1>
+  </div>
+  <div class="box__quote">
+   <div class="box__quote__left">
+    <div class="box__quote__left__label">
+      <p>pickup:</p>
+      <p>via</p>
+      <p>drop off:</p>
+      <p>date & time:</p>
+
+      <p>passengers:</p>
+      <p>louggages</p>
+      <p>greet:</p>
+    </div>
+    <div class="box__quote__left__details">
+
+      <p>{{ pickup }}</p>
+      <p>{{ via }}</p>
+      <p>{{ destination }}</p>
+      <p>{{ data | date : "fullDate" }} {{ data | date : "shortTime" }}</p>
+
+      <p>{{ passengers }}</p>
+      <p>{{ luggages }}</p>
+      <p [textContent]="greet ? 'Yes' : 'no'"></p>
+
+    </div>
+   </div>
+   <div class="box__quote__right">
+    <app-car-detail-price></app-car-detail-price>
+   </div>
+
+
+  </div>
+
+<div class="box__info">
+  <div class="box__info__name">
+    <input placeholder="Full Name:" type="text" />
+  </div>
+  <div class="box__info__mobile">
+    <input
+      placeholder="Mobile No:"
+      type="tel"
+      pattern="[0-9]{10}"
+      required
+    />
+    <input placeholder="Email:" type="email" />
+  </div>
+  <div class="box__info__instruction">
+    <textarea
+      placeholder="Driver Instruction:"
+      name="Instruction"
+      id="Instruction"
+      rows="4"
+    ></textarea>
+  </div>
+<button class="box__info__book">book now</button>
+
+</div>
+
+</div>

@@ -1,28 +1,19 @@
-import {
-  animate,
-  group,
-  query,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarBoobingQuoteComponent } from '../car-boobing-quote/car-boobing-quote.component';
-import { CarDetailPriceComponent } from './car-detail-price/car-detail-price.component';
-import { CarService } from '../../../Services/car.service';
+import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { CarService } from '../../Services/car.service';
+import { CommonModule } from '@angular/common';
+import { CarDetailPriceComponent } from "../booking/booking-detail/car-detail-price/car-detail-price.component";
 
 @Component({
-  selector: 'app-booking-detail',
+  selector: 'app-rezerwacja',
   standalone: true,
-  imports: [CommonModule, CarBoobingQuoteComponent, CarDetailPriceComponent],
-  templateUrl: './booking-detail.component.html',
-  styleUrl: './booking-detail.component.scss',
+  imports: [CommonModule, CarDetailPriceComponent],
+  templateUrl: './rezerwacja.component.html',
+  styleUrl: './rezerwacja.component.scss'
 })
-export class BookingDetailComponent {
+export class RezerwacjaComponent {
+  private subscription: Subscription = new Subscription();
   @Input() active: boolean = false;
   pickup?: string = '';
   destination?: string = '';
@@ -32,10 +23,7 @@ export class BookingDetailComponent {
   luggages?:string='';
   greet?:boolean=false;
 
-  signUpForm!: FormGroup;
-  private subscription: Subscription = new Subscription();
   constructor(private fb: FormBuilder, private carS: CarService) {}
-
 
 
   ngOnInit() {
@@ -58,4 +46,8 @@ export class BookingDetailComponent {
     // Unsubscribe to prevent memory leaks
     this.subscription.unsubscribe();
   }
+
+
+
+
 }

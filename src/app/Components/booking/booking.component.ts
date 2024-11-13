@@ -33,6 +33,7 @@ import { CarService } from '../../Services/car.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import ValidateForm from '../../helpers/validateForm';
 import { NotificationComponent } from '../notification/notification.component';
+import { RezerwacjaComponent } from "../rezerwacja/rezerwacja.component";
 export interface PlaceResult {
   address: string;
   location?: google.maps.LatLng;
@@ -58,7 +59,8 @@ export interface PlaceResult {
     BookingDetailComponent,
     ReactiveFormsModule,
     NotificationComponent,
-  ],
+    RezerwacjaComponent
+],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss',
 })

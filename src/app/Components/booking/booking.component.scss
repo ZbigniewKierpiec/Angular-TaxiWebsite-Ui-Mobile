@@ -103,7 +103,7 @@
     height: max-content;
 
     // background-color: skyblue;
-    // background-color: #f0f0f0;
+    background-color: #f0f0f0;
     flex-direction: column;
   }
 
@@ -131,18 +131,15 @@
     max-width: max-content;
     width: 100%;
 
-
     transition: transform 0.3s linear;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
- justify-items: space-around;
+    justify-items: space-around;
 
     grid-gap: 3rem;
-    margin: 0 auto;
 
     @include respond(tab-port) {
-
       width: 100%;
     }
     form {
@@ -176,8 +173,10 @@
       order: 2;
       display: none;
       opacity: 0;
+
       @include respond(tab-port) {
         width: 85%;
+
         order: -2;
       }
       &.active {
