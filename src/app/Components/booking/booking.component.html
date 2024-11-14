@@ -4,7 +4,7 @@
     <img src="/assets/Precious_Stones_eBay_Logo-removebg-preview.png" alt="" />
   </div>
   <div [class.active]="active" class="booking__wraper">
-    <form            [formGroup]="quoteForm">
+    <form [formGroup]="quoteForm">
       <div
         [classList]="
           bookingQuote
@@ -82,28 +82,25 @@
             type="datetime-local"
             name=""
             id="datetime-input"
-
-            [(ngModel)]="datetimeValue"
             (focus)="showLabel = true"
             (blur)="showLabel = !!datetimeValue"
-
-
           />
-          <label *ngIf="!datetimeValue" for="datetime">Select Date and Time</label>
-
+          <label *ngIf="!datetimeValue" for="datetime"
+            >Select Date and Time</label
+          >
 
           <small
             *ngIf="
               quoteForm.controls['data'].dirty &&
               quoteForm.hasError('required', 'data')
             "
-            class="text-danger">*data and time is required</small>
+            class="text-danger"
+            >*data and time is required</small
+          >
 
-            <small *ngIf="isPastDate" style="color: red;">
-              The selected date cannot be in the past.
-            </small>
-
-
+          <small *ngIf="isPastDate" style="color: red">
+            The selected date cannot be in the past.
+          </small>
         </div>
 
         <ng-container *ngIf="trip === 'return'">
@@ -114,21 +111,12 @@
             }"
             class="booking__quote__return"
           >
-
-
             <input
               placeholder="Pickup"
               type="datetime-local"
               name=""
               id="datetime-input"
-
-
-
             />
-
-
-
-
           </div>
         </ng-container>
 
@@ -192,9 +180,12 @@
         </div>
       </div>
     </form>
-    <app-map-display [from]="from" [to]="to"   [isActiveMap]="isActiveMap"        ></app-map-display>
+    <app-map-display
+      [from]="from"
+      [to]="to"
+      [isActiveMap]="isActiveMap"
+    ></app-map-display>
     <section [class.active]="bookingQuote" class="booking__wraper__resoult">
-
       <app-car-boobing-quote
         (clicked)="handleCarClick($event)"
         carType=" Executive"
@@ -211,15 +202,10 @@
         [customClass]="'hun'"
         [price]="totalCostIOniq"
       ></app-car-boobing-quote>
-
-
-
     </section>
-
-
-
   </div>
-<!--
+  <!--
   <app-booking-detail [active]="active"></app-booking-detail> -->
   <app-rezerwacja [active]="active"></app-rezerwacja>
 </section>
+<!-- [(ngModel)]="datetimeValue" -->
