@@ -15,11 +15,17 @@ import { CarDetailPriceComponent } from '../booking/booking-detail/car-detail-pr
 import ValidateForm from '../../helpers/validateForm';
 
 import { customEmailValidator } from './emailValidator';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import emailjs from '@emailjs/browser';
 @Component({
   selector: 'app-rezerwacja',
   standalone: true,
-  imports: [CommonModule, CarDetailPriceComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    CarDetailPriceComponent,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   templateUrl: './rezerwacja.component.html',
   styleUrl: './rezerwacja.component.scss',
 })
@@ -34,6 +40,9 @@ export class RezerwacjaComponent {
   passengers?: string = '';
   luggages?: string = '';
   greet?: boolean = false;
+  price?: string = '';
+  carType?: string = '';
+  carImage?: string = '';
   // name: string = '';
   // mobile: string = '';
   // email: string = '';
@@ -41,7 +50,11 @@ export class RezerwacjaComponent {
 
   formData: any = {};
   emailForm: FormGroup | undefined;
-  constructor(private fb: FormBuilder, private carS: CarService) {
+  constructor(
+    private fb: FormBuilder,
+    private carS: CarService,
+    private http: HttpClient
+  ) {
     this.bookingForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
       mobile: new FormControl('', [
@@ -51,6 +64,86 @@ export class RezerwacjaComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       instructions: new FormControl(''),
     });
+  }
+
+  async book() {
+    if (this.bookingForm.valid) {
+      this.formData = this.bookingForm.value;
+
+      const payload = {
+        pickup: this.pickup,
+        destination: this.destination,
+        via: this.via,
+        data: this.data,
+        passengers: this.passengers,
+        luggages: this.luggages,
+        greet: this.greet,
+        name: this.bookingForm.get('name')?.value || '', // Optional name field
+        mobile: this.bookingForm.get('mobile')?.value || '', // Optional mobile field
+        email: this.bookingForm.get('email')?.value || '', // Optional email field
+        instructions: this.bookingForm.get('instructions')?.value || '', // Optional instructions field
+        carType: this.carType,
+        carImage: this.carImage,
+        price: this.price,
+      };
+
+      emailjs.init('169d31qPmdVNK5UZg');
+
+      await emailjs.send('service_4ekvtt3', 'template_o7py4b8', {
+        from_name: this.bookingForm.get('email')?.value || '',
+        name: this.bookingForm.get('name')?.value || '',
+        pickup: this.pickup,
+        destination: this.destination,
+        via: this.via,
+        date: this.data,
+        passengers: this.passengers,
+        luggages: this.luggages,
+        greet: this.greet,
+        carType: this.carType,
+
+        price: this.price,
+        mobile: this.bookingForm.get('mobile')?.value || '',
+        email: this.bookingForm.get('email')?.value || '',
+        instructions: this.bookingForm.get('instructions')?.value || '',
+        reply_to: this.bookingForm.get('email')?.value || '',
+      });
+
+      await emailjs.send('service_4ekvtt3', 'template_cneqz4l', {
+        from_name: this.bookingForm.get('email')?.value || '',
+        name: this.bookingForm.get('name')?.value || '',
+        pickup: this.pickup,
+        destination: this.destination,
+        via: this.via,
+        date: this.data,
+        passengers: this.passengers,
+        luggages: this.luggages,
+        greet: this.greet,
+        carType: this.carType,
+
+        price: this.price,
+        mobile: this.bookingForm.get('mobile')?.value || '',
+        email: this.bookingForm.get('email')?.value || '',
+        instructions: this.bookingForm.get('instructions')?.value || '',
+        reply_to: this.bookingForm.get('email')?.value || '',
+      });
+
+      console.log(payload.carImage);
+      this.bookingForm.reset();
+    } else {
+      ValidateForm.validateAllFormFileds(this.bookingForm);
+      this.bookingForm.markAllAsTouched();
+    }
+  }
+
+  getCarImageUrl(carType: string): string {
+    // Define the images for different car types
+    const carImages: { [key: string]: string } = {
+      Sedan: 'https://example.com/images/sedan.jpg',
+      SUV: 'https://example.com/images/suv.jpg',
+      Van: 'https://example.com/images/van.jpg',
+    };
+
+    return carImages[carType] || 'https://example.com/images/default-car.jpg'; // Default image if no match
   }
 
   ngOnInit() {
@@ -65,18 +158,10 @@ export class RezerwacjaComponent {
       this.passengers = details?.passengers;
       this.luggages = details?.luggages;
       this.greet = details?.greet;
+      this.carType = details?.carType;
+      this.carImage = details?.image;
+      this.price = details?.price;
     });
-  }
-
-  book() {
-    if (this.bookingForm.valid) {
-      this.formData = this.bookingForm.value;
-      console.log(this.formData);
-      this.bookingForm.reset();
-    } else {
-      ValidateForm.validateAllFormFileds(this.bookingForm);
-      this.bookingForm.markAllAsTouched();
-    }
   }
 
   ngOnDestroy() {
