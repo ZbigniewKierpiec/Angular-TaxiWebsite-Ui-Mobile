@@ -177,12 +177,11 @@
         width: 40%;
         height: 100%;
         position: absolute;
-       pointer-events: none;
+        pointer-events: none;
 
         display: flex;
         justify-content: center;
         align-items: center;
-
       }
       input {
         flex-grow: 1;
@@ -222,30 +221,29 @@
           color: rgba(255, 255, 255, 0.487);
         }
       }
-      div{
+      div {
         width: 40%;
         height: 3rem;
         position: absolute;
-        right:0%;
+
         pointer-events: none;
         display: flex;
         justify-content: center;
         align-items: center;
-
       }
       small {
-       position: absolute;
+        position: absolute;
 
         font-size: 1.7rem;
         text-transform: capitalize;
       }
-      small.one {
-        left: 25%;
-        transform: translate(-25%);
+      .one {
+        left: 50%;
+        transform: translate(-105%);
       }
 
       .two {
-        position:absolute;
+        position: absolute;
         right: 25%;
         transform: translate(50%);
       }
@@ -290,11 +288,9 @@
       color: black;
       font-weight: bolder;
       background-color: whitesmoke;
-
+    }
   }
-}
 }
 .text-danger {
   color: red;
 }
-

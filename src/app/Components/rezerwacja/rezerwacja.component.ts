@@ -44,7 +44,10 @@ export class RezerwacjaComponent {
   constructor(private fb: FormBuilder, private carS: CarService) {
     this.bookingForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      mobile: new FormControl('', [Validators.required]),
+      mobile: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{7,15}$'),
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
       instructions: new FormControl(''),
     });
@@ -54,7 +57,7 @@ export class RezerwacjaComponent {
     // Subscribe to the carDetails observable
     this.subscription = this.carS.carDetails$.subscribe((details) => {
       // Update carDetails whenever it changes
-      console.log(details);
+      console.log('to jest z rezerwacja' + details?.price);
       this.destination = details?.destination;
       this.pickup = details?.pickup;
       this.via = details?.via;
@@ -71,11 +74,8 @@ export class RezerwacjaComponent {
       console.log(this.formData);
       this.bookingForm.reset();
     } else {
-      // Handle invalid form case
-
       ValidateForm.validateAllFormFileds(this.bookingForm);
       this.bookingForm.markAllAsTouched();
-      // Optionally, show an error message to the user
     }
   }
 

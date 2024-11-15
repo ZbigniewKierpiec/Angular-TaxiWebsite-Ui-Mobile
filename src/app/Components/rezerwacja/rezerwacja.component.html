@@ -1,4 +1,4 @@
-<div [class.active]="active" class="box">
+<div [class.active]="true" class="box">
   <div class="box__title">
     <h1>passenger details</h1>
   </div>
@@ -73,15 +73,32 @@
           name="email"
           formControlName="email"
         />
-
-        <small
+        <div
           *ngIf="
-            bookingForm.controls['mobile'].dirty &&
-            bookingForm.hasError('required', 'mobile')
+            bookingForm.controls['mobile'].invalid &&
+            (bookingForm.controls['mobile'].touched || bookingForm.dirty)
           "
-          class="text-danger one"
-          >*required</small
+          class="one"
         >
+          <small
+            *ngIf="
+              bookingForm.controls['mobile'].dirty &&
+              bookingForm.hasError('required', 'mobile')
+            "
+            class="text-danger"
+            >*required</small
+          >
+
+          <small
+            *ngIf="
+              bookingForm.controls['mobile'].dirty &&
+              bookingForm.hasError('pattern', 'mobile')
+            "
+            class="text-danger"
+          >
+            Must be between 7 and 15 digits.
+          </small>
+        </div>
 
         <div
           class="two"
