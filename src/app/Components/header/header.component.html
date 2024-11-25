@@ -54,6 +54,7 @@
 <nav #navBar [ngClass]="{ fixed: isFixed }" class="nav">
   <div class="nav__logo">
     <img
+      class="nav__logo__img"
       src="/assets/Precious Stones eBay Logo.png"
       alt="Bracknell Executive Travel Logo"
     />
@@ -71,9 +72,14 @@
           "Nav_Airport" | translate
         }}</a>
       </li>
-      <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
+      <!-- <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
         <a>{{ "Nav_Testimonials" | translate }}</a>
+      </li> -->
+
+      <li #listItem (click)="selectLi(2)" class="nav__menu__list__item">
+        <a   [routerLink]="['bracknellTaxis/booking/admin/list']"      >Booking List</a>
       </li>
+
       <li #listItem (click)="selectLi(3)" class="nav__menu__list__item">
         <a [routerLink]="['/bracknellTaxis/booking']">{{
           "Nav_Book" | translate
@@ -95,7 +101,9 @@
     <img src="/assets/mercedes.png" alt="Mercedes Logo" />
     <span>7</span>
   </div>
-
+  <button class="btn__log">
+    <a [routerLink]="['/bracknellTaxis/login']" style="display: block">login</a>
+  </button>
   <div class="nav__board">
     <div (click)="onCountrySelection()" class="nav__board__country-selection">
       <div class="nav__board__country-selection__flag">
@@ -146,11 +154,18 @@
           >{{ "Nav_Airport" | translate }}
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a>{{ "Nav_Testimonials" | translate }} </a>
+      </li> -->
+
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['/bracknellTaxis/booking/list']">Bookings List</a>
       </li>
+
       <li>
-        <a [routerLink]="['/bracknellTaxis/booking']"           >{{ "Nav_Book" | translate }}</a>
+        <a [routerLink]="['/bracknellTaxis/booking']">{{
+          "Nav_Book" | translate
+        }}</a>
       </li>
       <li>
         <a>{{ "Nav_Contact" | translate }}</a>

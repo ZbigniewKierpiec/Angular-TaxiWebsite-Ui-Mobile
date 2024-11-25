@@ -3,6 +3,10 @@ import { AirportTransferComponentComponent } from './Pages/airport-transfer-comp
 import { MainComponent } from './Pages/main/main.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { BookingDetailComponent } from './Components/booking/booking-detail/booking-detail.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { SignupComponent } from './Pages/signup/signup.component';
+import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { EditBookingsListComponent } from './Components/booking-list/edit-bookings-list/edit-bookings-list.component';
 
 // export const routes: Routes = [
 //   { path: '', redirectTo: 'bracknellTaxis/main', pathMatch: 'full' },
@@ -25,9 +29,27 @@ export const routes: Routes = [
     data: { animate: false },
   },
   {
-    path: 'bracknellTaxis/booking',
-    component: BookingComponent,
- 
+    path: 'bracknellTaxis/login',
+    component: LoginComponent,
   },
 
+  {
+    path: 'bracknellTaxis/signup',
+    component: SignupComponent,
+  },
+
+  {
+    path: 'bracknellTaxis/booking',
+    component: BookingComponent,
+  },
+
+  {
+    path: 'bracknellTaxis/booking/admin/list',
+    component: BookingListComponent,
+  },
+
+  {
+    path:'bracknellTaxis/booking/admin/list/:id',
+    component:EditBookingsListComponent
+  }
 ];

@@ -41,7 +41,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  encapsulation: ViewEncapsulation.None,
+
 })
 export class HeaderComponent {
   @ViewChild('navBar', { static: false }) navBar!: ElementRef;
